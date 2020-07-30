@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default FoodInProgress = () => {
+const FoodInProgress = () => {
   return <div></div>;
 };
+
+export default FoodInProgress;

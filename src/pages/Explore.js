@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default Explore = () => {
+const Explore = () => {
   return <div></div>;
 };
+
+export default Explore;

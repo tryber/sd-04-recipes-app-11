@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default DrinkInProgress = () => {
+const DrinkInProgress = () => {
   return <div></div>;
 };
+
+export default DrinkInProgress;

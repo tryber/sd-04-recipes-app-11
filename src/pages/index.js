@@ -1,6 +1,4 @@
 import DrinkDetails from './DrinkDetails';
-import DrinkIngredients from './DrinkIngredients';
-import DrinkInProgress from './DrinkInProgress';
 import Drinks from './Drinks';
 import Explore from './Explore';
 import ExploreDrinks from './ExploreDrinks';
@@ -14,14 +12,16 @@ import Login from './Login';
 import NotFound from './NotFound';
 import Profile from './Profile';
 import RecipesDone from './RecipesDone';
+import FoodsByOrigin from './FoodsByOrigin'
+import DrinkInProgress from './DrinkInProgress'
+import DrinkIngredients from './DrinkIngredients';
+
 
 export {
-  DrinkDetails,
   DrinkIngredients,
   DrinkInProgress,
   Drinks,
   Explore,
-  ExploreDrinks,
   ExploreDrinks,
   ExploreFoods,
   FavoriteRecipes,
@@ -32,5 +32,7 @@ export {
   Login,
   NotFound,
   Profile,
-  RecipesDone
+  RecipesDone,
+  FoodsByOrigin,
+  DrinkDetails
 };
