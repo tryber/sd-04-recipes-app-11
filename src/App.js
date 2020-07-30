@@ -8,13 +8,13 @@ import {
   Drinks,
   Explore,
   ExploreDrinks,
-  ExploreDrinks,
   ExploreFoods,
   FavoriteRecipes,
   FoodDetails,
   FoodIngredients,
   FoodInProgress,
   Foods,
+  FoodsByOrigin,
   Login,
   NotFound,
   Profile,
@@ -22,7 +22,7 @@ import {
 } from './pages';
 import './App.css';
 
-export default const App = () => (
+const App = () => (
   <AppProvider>
     <BrowserRouter>
       <Switch>
@@ -47,3 +47,5 @@ export default const App = () => (
     </BrowserRouter>
   </AppProvider>
 );
+
+export default App;

@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default ExploreDrinks = () => {
+const ExploreDrinks = () => {
   return <div></div>;
 };
+
+export default ExploreDrinks;

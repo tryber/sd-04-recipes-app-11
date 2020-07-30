@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default FoodsByOrigin = () => {
+const FoodsByOrigin = () => {
   return <div></div>;
 };
+
+export default FoodsByOrigin;

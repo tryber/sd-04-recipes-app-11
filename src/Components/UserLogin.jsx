@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
-const Login = () => {
+const UserLogin = () => {
   const { nome } = useContext(AppContext);
 
   return (
@@ -11,4 +11,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default UserLogin;
