@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
 import {
   DrinkDetails,
   DrinkIngredients,
@@ -21,8 +22,8 @@ import {
 } from './pages';
 import './App.css';
 
-function App() {
-  return (
+export default const App = () => (
+  <AppProvider>
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
@@ -44,7 +45,5 @@ function App() {
         <Route path="/" component={NotFound} />
       </Switch>
     </BrowserRouter>
-  );
-}
-
-export default App;
+  </AppProvider>
+);
