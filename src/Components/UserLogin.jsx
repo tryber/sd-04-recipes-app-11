@@ -42,7 +42,7 @@ const UserLogin = () => {
           <button
             type="submit"
             data-testid="login-submit-btn"
-            disabled={(validEmail() && password.length) < 7 || false}
+            disabled={!(validEmail() && password.length > 6)}
             onClick={setToLocalStorage}
           >
             Login
