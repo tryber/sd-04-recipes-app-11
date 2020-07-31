@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
 const UserLogin = () => {
-  const { email, setEmail, password, setPassword } = useContext(AppContext);
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useContext(AppContext);
 
   const validEmail = () => /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
 

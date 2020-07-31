@@ -19,9 +19,8 @@ export default function CategoryCard({ categoryName }) {
           setFilteredFoods(filterByCategory(foods, categoryName));
         }}
         data-testid={`${categoryName}-category-filter`}
-      >
-        {categoryName}
-      </input>
+        value={categoryName}
+      />
     </div>
   );
 }
