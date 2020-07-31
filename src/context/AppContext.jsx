@@ -5,11 +5,14 @@ import { useState } from 'react';
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [nome, setNome] = useState('Alcionze');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const context = {
-    nome,
-    setNome,
+    email,
+    password,
+    setEmail,
+    setPassword,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
