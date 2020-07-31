@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import Header from './Components/Header';
 import {
   DrinkDetails,
   DrinkIngredients,
@@ -24,6 +25,7 @@ import './App.css';
 
 const App = () => (
   <AppProvider>
+    <Header></Header>
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
