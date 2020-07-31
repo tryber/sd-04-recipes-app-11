@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
 import PropTypes from 'prop-types';
+import { AppContext } from '../context/AppContext';
 
 function filterByCategory(foods, category) {
   return foods.filter(({ strCategory }) => strCategory === category);
@@ -11,7 +11,8 @@ export default function CategoryCard({ categoryName }) {
 
   return (
     <div>
-      <button
+      <input
+        type="button"
         onClick={() => {
           console.log('array', foods);
           console.log('novo array', filterByCategory(foods, categoryName));
@@ -20,7 +21,7 @@ export default function CategoryCard({ categoryName }) {
         data-testid={`${categoryName}-category-filter`}
       >
         {categoryName}
-      </button>
+      </input>
     </div>
   );
 }
