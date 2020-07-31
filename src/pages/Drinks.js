@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import DrinksCards from '../Components/DrinksCards';
 import getDrinks from '../services/getDrinks';
@@ -37,17 +36,18 @@ const Foods = () => {
   return (
     <div>
       <div>
-        <button
+        <input
+          type="button"
           onClick={() => {
             setFilteredDrinks(drinks);
           }}
-          data-testid={'All-category-filter'}
-        >
-          All
-        </button>
-        {drinksCategories.map(({ strCategory }, index) =>
-          index < 5 ? <CategoryCard key={strCategory} categoryName={strCategory} /> : null,
-        )}
+          data-testid="All-category-filter"
+          value="All"
+        />
+        {drinksCategories.map(({ strCategory }, index) => {
+          if (index < 5) return <CategoryCard key={strCategory} categoryName={strCategory} />;
+          return null;
+        })}
       </div>
       <DrinksCards filteredDrinks={filteredDrinks} />
     </div>
