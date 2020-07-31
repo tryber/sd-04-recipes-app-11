@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import PropTypes from 'prop-types';
 
 function filterByCategory(foods, category) {
   return foods.filter(({ strCategory }) => strCategory === category);
@@ -23,3 +24,7 @@ export default function CategoryCard({ categoryName }) {
     </div>
   );
 }
+
+CategoryCard.propTypes = {
+  categoryName: PropTypes.string.isRequired,
+};

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { AppContext } from '../context/AppContext';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function DrinkCard({ drink, index }) {
   const { strDrinkThumb, strDrink } = drink;
@@ -11,7 +11,7 @@ function DrinkCard({ drink, index }) {
   );
 }
 
-export default function FoodCards({ filteredDrinks }) {
+export default function DrinksCards({ filteredDrinks }) {
   return (
     <div>
       {filteredDrinks.map((drink, index) =>
@@ -19,4 +19,8 @@ export default function FoodCards({ filteredDrinks }) {
       )}
     </div>
   );
+}
+
+DrinksCards.propTypes = {
+  filteredDrinks: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

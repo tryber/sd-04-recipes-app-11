@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
+import PropTypes from 'prop-types';
 
 function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
@@ -20,3 +21,7 @@ export default function FoodCards({ filteredFoods }) {
     </div>
   );
 }
+
+FoodCards.propTypes = {
+  filteredFoods: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
