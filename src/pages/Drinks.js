@@ -4,6 +4,7 @@ import DrinksCards from '../Components/DrinksCards';
 import getDrinks from '../services/getDrinks';
 import getDrinksCategories from '../services/getDrinksCategories';
 import DrinkCategory from '../Components/DrinkCategory';
+import Footer from '../Components/Footer';
 
 const Foods = () => {
   const {
@@ -30,9 +31,7 @@ const Foods = () => {
     });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -53,6 +52,7 @@ const Foods = () => {
       </div>
       {console.log('filteredDrinks', filteredDrinks)}
       <DrinksCards filteredDrinks={filteredDrinks} />
+      <Footer />
     </div>
   );
 };

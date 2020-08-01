@@ -1,7 +1,10 @@
 import React from 'react';
+import Footer from '../Components/Footer';
 
-const FoodsByOrigin = () => {
-  return <div></div>;
-};
+const FoodsByOrigin = () => (
+  <div>
+    <Footer />
+  </div>
+);
 
 export default FoodsByOrigin;

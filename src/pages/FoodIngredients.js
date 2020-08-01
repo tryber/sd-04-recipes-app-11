@@ -1,7 +1,10 @@
 import React from 'react';
+import Footer from '../Components/Footer';
 
-const FoodIngredients = () => {
-  return <div></div>;
-};
+const FoodIngredients = () => (
+  <div>
+    <Footer />
+  </div>
+);
 
 export default FoodIngredients;
