@@ -3,10 +3,8 @@ import { render } from '@testing-library/react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
-
 const Header = (props) => {
-
-  const { title, setTitle }= useContext(AppContext);
+  const { title, setTitle } = useContext(AppContext);
 
   const openSearch = (props) => {
     return (
@@ -43,8 +41,7 @@ const Header = (props) => {
         </Link>
         {/* Inserir a rota */}
         <Link to="/explorar/bebidas">
-        <button>Explorar Bebidas</button>
-
+          <button>Explorar Bebidas</button>
         </Link>
       </div>
     );
@@ -54,7 +51,7 @@ const Header = (props) => {
     return (
       <div>
         <input type="receitas-feitas" name="receitas-feitas" />
-{/*         <button>All</button>
+        {/*         <button>All</button>
         <button>Food</button>
         <button>Drinks</button> */}
       </div>
@@ -72,8 +69,8 @@ const Header = (props) => {
   return (
     <>
       <div>
-        <Link to="/perfil" >
-        <button>Perfil</button>
+        <Link to="/perfil">
+          <button>Perfil</button>
         </Link>
         <h1>{title}</h1>
         {openSearch()}
@@ -85,7 +82,5 @@ const Header = (props) => {
     </>
   );
 };
-
-
 
 export default Header;
