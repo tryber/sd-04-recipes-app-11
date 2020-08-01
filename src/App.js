@@ -25,8 +25,9 @@ import './App.css';
 
 const App = () => (
   <AppProvider>
-    <Header></Header>
     <BrowserRouter>
+      <Header />
+
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/comidas" component={Foods} />

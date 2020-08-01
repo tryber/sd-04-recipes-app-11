@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { render } from '@testing-library/react';
-import { Link, Redirect, Router } from 'react-router-dom';
-import { ExploreFoods } from '../pages/ExploreFoods';
+import { Link } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
+
 
 const Header = (props) => {
-  const { title } = props;
+
+  const { title, setTitle }= useContext(AppContext);
 
   const openSearch = (props) => {
     return (
@@ -36,12 +38,14 @@ const Header = (props) => {
   const explorerButtons = () => {
     return (
       <div>
-        <Router>
         <Link to="/explorar/comidas">
           <button>Explorar Comidas</button>
         </Link>
         {/* Inserir a rota */}
+        <Link to="/explorar/bebidas">
         <button>Explorar Bebidas</button>
+
+        </Link>
       </div>
     );
   };
@@ -50,9 +54,9 @@ const Header = (props) => {
     return (
       <div>
         <input type="receitas-feitas" name="receitas-feitas" />
-        <button>All</button>
+{/*         <button>All</button>
         <button>Food</button>
-        <button>Drinks</button>
+        <button>Drinks</button> */}
       </div>
     );
   };
@@ -68,7 +72,9 @@ const Header = (props) => {
   return (
     <>
       <div>
+        <Link to="/perfil" >
         <button>Perfil</button>
+        </Link>
         <h1>{title}</h1>
         {openSearch()}
         {explorerButtons()}
@@ -79,5 +85,7 @@ const Header = (props) => {
     </>
   );
 };
+
+
 
 export default Header;
