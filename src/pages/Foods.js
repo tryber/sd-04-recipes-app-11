@@ -5,6 +5,7 @@ import FoodCards from '../Components/FoodCards';
 import getFoods from '../services/getFoods';
 import getFoodsCategories from '../services/getFoodsCategories';
 import FoodCategory from '../Components/FoodCategory';
+import Footer from '../Components/Footer';
 
 const Foods = () => {
   const {
@@ -53,6 +54,7 @@ const Foods = () => {
         })}
       </div>
       <FoodCards filteredFoods={filteredFoods} />
+      <Footer />
     </div>
   );
 };

@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponents as DrinkIcon } from '../images/drinkIcon.svg';
-import { ReactComponents as ExplorerIcon } from '../images/exploreIcon.svg';
-import { ReactComponents as MealIcon } from '../images/mealIcon.svg';
+import DrinkIcon from '../images/drinkIcon.svg';
+import ExplorerIcon from '../images/exploreIcon.svg';
+import MealIcon from '../images/mealIcon.svg';
 
 const Footer = () => (
-  <footer>
+  <footer data-testid="footer" style={{ position: 'fixed', bottom: 0 }}>
     <div>
       <Link to="/bebidas">
-        <DrinkIcon />
+        <img src={DrinkIcon} alt="bebida" data-testid="drinks-bottom-btn" />
       </Link>
       <Link to="/explorar">
-        <ExplorerIcon />
+        <img src={ExplorerIcon} alt="explorar" data-testid="explore-bottom-btn" />
       </Link>
       <Link to="/comidas">
-        <MealIcon />
+        <img src={MealIcon} alt="comida" data-testid="food-bottom-btn" />
       </Link>
     </div>
   </footer>
