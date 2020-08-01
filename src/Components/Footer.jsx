@@ -1,20 +1,21 @@
 import React from 'react';
-// import { drinkIcon, explorerIcon, mealIcon } from '../images';
+import { Link } from 'react-router-dom';
 import { ReactComponents as DrinkIcon } from '../images/drinkIcon.svg';
 import { ReactComponents as ExplorerIcon } from '../images/exploreIcon.svg';
 import { ReactComponents as MealIcon } from '../images/mealIcon.svg';
 
-// import './Footer.css';
-
 const Footer = () => (
   <footer>
     <div>
-      {/* <img alt="drink" src={drinkIcon} className="icons" /> */}
-      {/* <img alt="explore" src={explorerIcon} className="icons" /> */}
-      {/* <img alt="meal" src={mealIcon} className="icon" /> */}
-      <DrinkIcon />
-      <ExplorerIcon />
-      <MealIcon />
+      <Link to="/bebidas">
+        <DrinkIcon />
+      </Link>
+      <Link to="/explorar">
+        <ExplorerIcon />
+      </Link>
+      <Link to="/comidas">
+        <MealIcon />
+      </Link>
     </div>
   </footer>
 );
