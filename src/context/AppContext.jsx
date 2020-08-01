@@ -16,6 +16,7 @@ const AppProvider = ({ children }) => {
   const [drinksCategories, setDrinksCategories] = useState([]);
 
   const [loading, setLoading] = useState(true);
+  const [filteredWith, setFilteredWith] = useState('All');
 
   const context = {
     email,
@@ -36,6 +37,8 @@ const AppProvider = ({ children }) => {
     setFilteredFoods,
     filteredDrinks,
     setFilteredDrinks,
+    filteredWith,
+    setFilteredWith,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

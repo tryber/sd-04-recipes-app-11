@@ -4,7 +4,7 @@ import { AppContext } from '../context/AppContext';
 import FoodCards from '../Components/FoodCards';
 import getFoods from '../services/getFoods';
 import getFoodsCategories from '../services/getFoodsCategories';
-import CategoryCard from '../Components/CategoryCard';
+import FoodCategory from '../Components/FoodCategory';
 
 const Foods = () => {
   const {
@@ -16,6 +16,7 @@ const Foods = () => {
     setLoading,
     filteredFoods,
     setFilteredFoods,
+    setFilteredWith,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -38,15 +39,16 @@ const Foods = () => {
     <div>
       <div>
         <input
-          type="text"
+          type="button"
           onClick={() => {
             setFilteredFoods(foods);
+            return setFilteredWith('All');
           }}
           data-testid="All-category-filter"
           value="All"
         />
         {foodsCategories.map(({ strCategory }, index) => {
-          if (index < 5) return <CategoryCard key={strCategory} categoryName={strCategory} />;
+          if (index < 5) return <FoodCategory key={strCategory} categoryName={strCategory} />;
           return null;
         })}
       </div>

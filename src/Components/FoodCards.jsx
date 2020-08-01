@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
@@ -15,7 +16,13 @@ export default function FoodCards({ filteredFoods }) {
   return (
     <div>
       {filteredFoods.map((food, index) => {
-        if (index < 12) return <FoodCard food={food} key={food.strMeal} index={index} />;
+        if (index < 12) {
+          return (
+            <Link to={`/comidas/${food.idMeal}`}>
+              <FoodCard food={food} key={food.strMeal} index={index} />
+            </Link>
+          );
+        }
         return null;
       })}
     </div>

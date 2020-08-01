@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function DrinkCard({ drink, index }) {
   const { strDrinkThumb, strDrink } = drink;
@@ -15,7 +16,13 @@ export default function DrinksCards({ filteredDrinks }) {
   return (
     <div>
       {filteredDrinks.map((drink, index) => {
-        if (index < 12) return <DrinkCard drink={drink} key={drink.strDrink} index={index} />;
+        if (index < 12) {
+          return (
+            <Link to={`/bebidas/${drink.idDrink}`}>
+              <DrinkCard drink={drink} key={drink.strDrink} index={index} />
+            </Link>
+          );
+        }
         return null;
       })}
     </div>
