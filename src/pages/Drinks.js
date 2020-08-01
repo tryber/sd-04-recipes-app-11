@@ -1,7 +1,60 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { AppContext } from '../context/AppContext';
+import DrinksCards from '../Components/DrinksCards';
+import getDrinks from '../services/getDrinks';
+import getDrinksCategories from '../services/getDrinksCategories';
+import DrinkCategory from '../Components/DrinkCategory';
 
-const Drinks = () => {
-  return <div></div>;
+const Foods = () => {
+  const {
+    drinks,
+    setDrinks,
+    drinksCategories,
+    setDrinksCategories,
+    loading,
+    setLoading,
+    filteredDrinks,
+    setFilteredDrinks,
+    setFilteredWith,
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    getDrinksCategories().then((response) => {
+      setDrinksCategories(response.drinks);
+    });
+
+    getDrinks().then((response) => {
+      setDrinks(response.drinks);
+      setFilteredDrinks(response.drinks);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <div>
+        <input
+          type="button"
+          onClick={() => {
+            setFilteredDrinks(drinks);
+            return setFilteredWith('All');
+          }}
+          data-testid="All-category-filter"
+          value="All"
+        />
+        {drinksCategories.map(({ strCategory }, index) => {
+          if (index < 5) return <DrinkCategory key={strCategory} categoryName={strCategory} />;
+          return null;
+        })}
+      </div>
+      {console.log('filteredDrinks', filteredDrinks)}
+      <DrinksCards filteredDrinks={filteredDrinks} />
+    </div>
+  );
 };
 
-export default Drinks;
+export default Foods;

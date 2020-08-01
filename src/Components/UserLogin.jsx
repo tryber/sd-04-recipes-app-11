@@ -2,17 +2,22 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
+const validEmail = (email) => /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
+
+const setToLocalStorage = (email) => {
+  const userEmail = JSON.stringify({ email });
+  localStorage.setItem('user', userEmail);
+  localStorage.setItem('mealsToken', 1);
+  localStorage.setItem('cocktailsToken', 1);
+};
+
 const UserLogin = () => {
-  const { email, setEmail, password, setPassword } = useContext(AppContext);
-
-  const validEmail = () => /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
-
-  const setToLocalStorage = () => {
-    const userEmail = JSON.stringify({ email });
-    localStorage.setItem('user', userEmail);
-    localStorage.setItem('mealsToken', 1);
-    localStorage.setItem('cocktailsToken', 1);
-  };
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useContext(AppContext);
 
   return (
     <div>
@@ -42,8 +47,8 @@ const UserLogin = () => {
           <button
             type="submit"
             data-testid="login-submit-btn"
-            disabled={!(validEmail() && password.length > 6)}
-            onClick={setToLocalStorage}
+            disabled={!(validEmail(email) && password.length > 6)}
+            onClick={() => setToLocalStorage(email)}
           >
             Login
           </button>
