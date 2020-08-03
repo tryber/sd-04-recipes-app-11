@@ -6,6 +6,7 @@ import getFoods from '../services/getFoods';
 import getFoodsCategories from '../services/getFoodsCategories';
 import FoodCategory from '../Components/FoodCategory';
 import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 
 const Foods = () => {
   const {
@@ -38,6 +39,9 @@ const Foods = () => {
 
   return (
     <div>
+          <Header haveSearch="true" />
+
+          <h1 data-testid="page-title">Comidas</h1>
       <div>
         <input
           type="button"
