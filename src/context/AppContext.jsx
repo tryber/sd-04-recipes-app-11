@@ -8,14 +8,18 @@ const AppProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [title, setTitle] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
+
 
   const context = {
     email,
     password,
     title,
+    showSearch,
     setEmail,
     setPassword,
     setTitle,
+    setShowSearch,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
