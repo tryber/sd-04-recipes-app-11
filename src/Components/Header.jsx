@@ -41,7 +41,7 @@ const Header = (props) => {
 
 Header.propTypes = {
   haveSearch: PropTypes.string.isRequired,
-  noIcon: PropTypes.bool,
+  noIcon: PropTypes.bool.isRequired,
 };
 
 export default Header;
