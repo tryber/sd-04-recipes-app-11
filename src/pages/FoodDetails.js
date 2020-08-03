@@ -21,8 +21,7 @@ function DrinkCard({ drink, index }) {
 function RecommendedCards({ drinks }) {
   return (
     <div style={{ display: 'flex' }}>
-      {drinks.map((food, index) => {
-        console.log(food);
+      {drinks.forEach((food, index) => {
         if (index < 2) {
           return (
             <Link to={`/bebidas/${food.idDrink}`}>
@@ -85,7 +84,7 @@ const FoodDetails = (props) => {
           return (
             <div>
               <p data-testid={`${index}-ingredient-name-and-measure`}>
-                {'- ' + ingredient + ' - ' + measure}
+                {`- + ${ingredient} - ${measure}`}
               </p>
             </div>
           );
@@ -118,4 +117,4 @@ DrinkCard.propTypes = {
 
 RecommendedCards.propTypes = {
   drinks: PropTypes.arrayOf(PropTypes.any).isRequired,
-}
+};
