@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
-
-const OpenSearch = (props) => {
+const OpenSearch = () => {
   const { showSearch } = useContext(AppContext);
   console.log(showSearch);
   if (showSearch) {

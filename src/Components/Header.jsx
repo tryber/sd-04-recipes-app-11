@@ -10,39 +10,34 @@ const Header = (props) => {
 
   if (props.haveSearch) {
     return (
-      <>
-        <div>
-          <Link to="/perfil">
-            <img src={Profile} data-testid="profile-top-btn" />
-          </Link>
-          <h1 data-testid="page-title">{title}</h1>
-          {props.noIcon ? (
-            <div>
-            </div>
-          ) : (
-            <div>
-              <img
-                src={searchIcon}
-                onClick={() => setShowSearch(!showSearch)}
-                alt="searchIcon"
-                data-testid="search-top-btn"
-              />
-              <OpenSearch />
-            </div>
-          )}
-        </div>
-      </>
+      <div>
+        <Link to="/perfil">
+          <img src={Profile} data-testid="profile-top-btn" />
+        </Link>
+        <h1 data-testid="page-title">{title}</h1>
+        {props.noIcon ? (
+          <div></div>
+        ) : (
+          <div>
+            <img
+              src={searchIcon}
+              onClick={() => setShowSearch(!showSearch)}
+              alt="searchIcon"
+              data-testid="search-top-btn"
+            />
+            <OpenSearch />
+          </div>
+        )}
+      </div>
     );
   } else {
     return (
-      <>
-        <div>
-          <Link to="/perfil">
-            <img src={Profile} data-testid="profile-top-btn" />
-          </Link>
-          <h1 data-testid="page-title">{title}</h1>
-        </div>
-      </>
+      <div>
+        <Link to="/perfil">
+          <img src={Profile} data-testid="profile-top-btn" />
+        </Link>
+        <h1 data-testid="page-title">{title}</h1>
+      </div>
     );
   }
 };

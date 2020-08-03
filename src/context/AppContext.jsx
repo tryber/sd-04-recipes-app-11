@@ -10,7 +10,6 @@ const AppProvider = ({ children }) => {
   const [title, setTitle] = useState('');
   const [showSearch, setShowSearch] = useState(false);
 
-
   const context = {
     email,
     password,
