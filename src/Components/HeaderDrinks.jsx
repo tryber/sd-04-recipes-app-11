@@ -1,6 +1,7 @@
+import React from 'react';
 import drinkIcon from 'drinkIcon.svg';
 
-const HeaderDrinks = (props) => {
+const HeaderDrinks = () => {
   const { title } = props.return(
     <div>
       <h1>{title}</h1>

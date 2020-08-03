@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -12,12 +13,10 @@ const Header = (props) => {
     return (
       <div>
         <Link to="/perfil">
-          <img src={Profile} data-testid="profile-top-btn" />
+          <img src={Profile} data-testid="profile-top-btn" alt="profile-top-btn" />
         </Link>
         <h1 data-testid="page-title">{title}</h1>
-        {props.noIcon ? (
-          <div></div>
-        ) : (
+        {props.noIcon ? null : (
           <div>
             <img
               src={searchIcon}
@@ -31,16 +30,20 @@ const Header = (props) => {
       </div>
     );
   }
-  {
-    return (
-      <div>
-        <Link to="/perfil">
-          <img src={Profile} data-testid="profile-top-btn" alt="profile-top-btn" />
-        </Link>
-        <h1 data-testid="page-title">{title}</h1>
-      </div>
-    );
-  }
+
+  return (
+    <div>
+      <Link to="/perfil">
+        <img src={Profile} data-testid="profile-top-btn" alt="profile-top-btn" />
+      </Link>
+      <h1 data-testid="page-title">{title}</h1>
+    </div>
+  );
+};
+
+Header.propTypes = {
+  haveSearch: PropTypes.string.isRequired,
+  noIcon: PropTypes.bool,
 };
 
 export default Header;

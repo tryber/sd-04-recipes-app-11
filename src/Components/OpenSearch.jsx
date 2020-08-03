@@ -29,9 +29,8 @@ const OpenSearch = () => {
       </div>
     );
   }
-  {
-    return null;
-  }
+
+  return null;
 };
 
 export default OpenSearch;
