@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import Profile from '../images/profileIcon.svg';
@@ -30,11 +30,12 @@ const Header = (props) => {
         )}
       </div>
     );
-  } else {
+  }
+  {
     return (
       <div>
         <Link to="/perfil">
-          <img src={Profile} data-testid="profile-top-btn" />
+          <img src={Profile} data-testid="profile-top-btn" alt="profile-top-btn" />
         </Link>
         <h1 data-testid="page-title">{title}</h1>
       </div>

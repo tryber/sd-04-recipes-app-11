@@ -28,7 +28,8 @@ const OpenSearch = () => {
         <button>Buscar</button>
       </div>
     );
-  } else {
+  }
+  {
     return null;
   }
 };
