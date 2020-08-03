@@ -1,19 +1,36 @@
 import React, { useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player';
+import { Link } from 'react-router-dom';
 import getFoodById from '../services/getFoodById';
 import getDrinks from '../services/getDrinks';
 import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import ReactPlayer from 'react-player';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-export function DrinkCard({ food, index }) {
-  const { strDrinkThumb, strDrink } = food;
+function DrinkCard({ drink, index }) {
+  const { strDrinkThumb, strDrink } = drink;
   return (
     <div data-testid={`${index}-recomendation-card`}>
       <img src={strDrinkThumb} alt={strDrink} />
       <p data-testid={`${index}-recomendation-title`}>{strDrink}</p>
+    </div>
+  );
+}
+
+function RecommendedCards({ drinks }) {
+  return (
+    <div style={{ display: 'flex' }}>
+      {drinks.map((food, index) => {
+        console.log(food);
+        if (index < 2) {
+          return (
+            <Link to={`/bebidas/${food.idDrink}`}>
+              <DrinkCard food={food} key={food.strDrink} index={index} />
+            </Link>
+          );
+        }
+      })}
     </div>
   );
 }
@@ -64,7 +81,7 @@ const FoodDetails = (props) => {
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
         .filter(({ ingredient }) => ingredient !== '')
-        .map(({ ingredient, measure }, index) => {
+        .forEach(({ ingredient, measure }, index) => {
           return (
             <div>
               <p data-testid={`${index}-ingredient-name-and-measure`}>
@@ -78,18 +95,7 @@ const FoodDetails = (props) => {
       <h2>Video</h2>
       <ReactPlayer data-testid="video" url={foodDetails.strYoutube} />
       <h2>Recomendadas</h2>
-      <div style={{ display: 'flex' }}>
-        {drinks.map((food, index) => {
-          console.log(food);
-          if (index < 2) {
-            return (
-              <Link to={`/bebidas/${food.idDrink}`}>
-                <DrinkCard food={food} key={food.strDrink} index={index} />
-              </Link>
-            );
-          }
-        })}
-      </div>
+      <RecommendedCards drinks={drinks} />
       <Link to={`/comidas/${foodDetails.idMeal}/in-progress`}>
         <input type="button" data-testid="start-recipe-btn" value="Iniciar Receita" />
       </Link>
@@ -109,3 +115,7 @@ DrinkCard.propTypes = {
   drink: PropTypes.objectOf(PropTypes.any).isRequired,
   index: PropTypes.number.isRequired,
 };
+
+RecommendedCards.propTypes = {
+  drinks: PropTypes.arrayOf(PropTypes.any).isRequired,
+}

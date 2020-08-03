@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export function FoodCard({ food, index }) {
+function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
   return (
     <div data-testid={`${index}-recipe-card`}>
@@ -11,8 +11,6 @@ export function FoodCard({ food, index }) {
     </div>
   );
 }
-
-
 
 export default function FoodCards({ filteredFoods }) {
   return (
