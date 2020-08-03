@@ -18,12 +18,10 @@ const Header = (props) => {
         <h1 data-testid="page-title">{title}</h1>
         {props.noIcon ? null : (
           <div>
-            <img
-              src={searchIcon}
-              onClick={() => setShowSearch(!showSearch)}
-              alt="searchIcon"
-              data-testid="search-top-btn"
-            />
+            <button onClick={() => setShowSearch(!showSearch)}>
+              <img src={searchIcon} alt="searchIcon" data-testid="search-top-btn" />
+            </button>
+
             <OpenSearch />
           </div>
         )}
