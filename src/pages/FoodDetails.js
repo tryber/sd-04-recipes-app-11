@@ -29,6 +29,7 @@ function RecommendedCards({ drinks }) {
             </Link>
           );
         }
+        return null;
       })}
     </div>
   );
