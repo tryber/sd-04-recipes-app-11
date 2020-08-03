@@ -1,7 +1,9 @@
 import React from 'react';
 
-const FoodInProgress = () => {
-  return <div></div>;
-};
+const FoodInProgress = () => (
+  <div>
+    <div />
+  </div>
+);
 
 export default FoodInProgress;

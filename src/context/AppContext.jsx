@@ -1,6 +1,5 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
 const AppContext = createContext();
 
@@ -9,6 +8,17 @@ const AppProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [title, setTitle] = useState('');
   const [showSearch, setShowSearch] = useState(false);
+
+  const [foods, setFoods] = useState([]);
+  const [filteredFoods, setFilteredFoods] = useState([]);
+  const [foodsCategories, setFoodsCategories] = useState([]);
+
+  const [drinks, setDrinks] = useState([]);
+  const [filteredDrinks, setFilteredDrinks] = useState([]);
+  const [drinksCategories, setDrinksCategories] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+  const [filteredWith, setFilteredWith] = useState('All');
 
   const context = {
     email,
@@ -19,6 +29,22 @@ const AppProvider = ({ children }) => {
     setPassword,
     setTitle,
     setShowSearch,
+    foods,
+    setFoods,
+    drinks,
+    setDrinks,
+    loading,
+    setLoading,
+    foodsCategories,
+    setFoodsCategories,
+    drinksCategories,
+    setDrinksCategories,
+    filteredFoods,
+    setFilteredFoods,
+    filteredDrinks,
+    setFilteredDrinks,
+    filteredWith,
+    setFilteredWith,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
