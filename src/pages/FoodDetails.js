@@ -68,7 +68,7 @@ const FoodDetails = (props) => {
           return (
             <div>
               <p data-testid={`${index}-ingredient-name-and-measure`}>
-                {'- ' + ingredient + ' - ' + measure}
+                {`- ${ingredient} - ${measure}`}
               </p>
             </div>
           );
@@ -87,6 +87,7 @@ const FoodDetails = (props) => {
               </Link>
             );
           }
+          return null;
         })}
       </div>
       <Link to={`/comidas/${foodDetails.idMeal}/in-progress`}>
