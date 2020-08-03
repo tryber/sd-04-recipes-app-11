@@ -3,7 +3,8 @@ import Header from '../Components/Header';
 
 const Foods = () => {
   return <div>
-    <Header />
+    <h1 data-testid="page-title">Comidas</h1>
+    <Header haveSearch='true' />
   </div>;
 };
 
