@@ -5,8 +5,9 @@ import getDrinks from '../services/getDrinks';
 import getDrinksCategories from '../services/getDrinksCategories';
 import DrinkCategory from '../Components/DrinkCategory';
 import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 
-const Foods = () => {
+const Drinks = () => {
   const {
     drinks,
     setDrinks,
@@ -35,6 +36,8 @@ const Foods = () => {
 
   return (
     <div>
+     <Header haveSearch />
+     <h1 data-testid="page-title">Bebidas</h1>
       <div>
         <input
           type="button"
