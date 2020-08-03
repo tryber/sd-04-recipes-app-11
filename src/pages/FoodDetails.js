@@ -1,36 +1,19 @@
 import React, { useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import getFoodById from '../services/getFoodById';
 import getDrinks from '../services/getDrinks';
 import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
-function DrinkCard({ drink, index }) {
+export function DrinkCard({ drink, index }) {
   const { strDrinkThumb, strDrink } = drink;
   return (
     <div data-testid={`${index}-recomendation-card`}>
       <img src={strDrinkThumb} alt={strDrink} />
       <p data-testid={`${index}-recomendation-title`}>{strDrink}</p>
-    </div>
-  );
-}
-
-function RecommendedCards({ drinks }) {
-  return (
-    <div style={{ display: 'flex' }}>
-      {drinks.forEach((food, index) => {
-        if (index < 2) {
-          return (
-            <Link to={`/bebidas/${food.idDrink}`}>
-              <DrinkCard food={food} key={food.strDrink} index={index} />
-            </Link>
-          );
-        }
-        return null;
-      })}
     </div>
   );
 }
@@ -81,11 +64,11 @@ const FoodDetails = (props) => {
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
         .filter(({ ingredient }) => ingredient !== '')
-        .forEach(({ ingredient, measure }, index) => {
+        .map(({ ingredient, measure }, index) => {
           return (
             <div>
               <p data-testid={`${index}-ingredient-name-and-measure`}>
-                {`- + ${ingredient} - ${measure}`}
+                {'- ' + ingredient + ' - ' + measure}
               </p>
             </div>
           );
@@ -95,7 +78,17 @@ const FoodDetails = (props) => {
       <h2>Video</h2>
       <ReactPlayer data-testid="video" url={foodDetails.strYoutube} />
       <h2>Recomendadas</h2>
-      <RecommendedCards drinks={drinks} />
+      <div style={{ display: 'flex' }}>
+        {drinks.map((drink, index) => {
+          if (index < 2) {
+            return (
+              <Link to={`/bebidas/${drink.idDrink}`}>
+                <DrinkCard drink={drink} key={drink.strDrink} index={index} />
+              </Link>
+            );
+          }
+        })}
+      </div>
       <Link to={`/comidas/${foodDetails.idMeal}/in-progress`}>
         <input type="button" data-testid="start-recipe-btn" value="Iniciar Receita" />
       </Link>
@@ -114,8 +107,4 @@ export default FoodDetails;
 DrinkCard.propTypes = {
   drink: PropTypes.objectOf(PropTypes.any).isRequired,
   index: PropTypes.number.isRequired,
-};
-
-RecommendedCards.propTypes = {
-  drinks: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
