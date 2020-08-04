@@ -1,13 +1,14 @@
 import React from 'react';
-import Footer from '../Components/Footer';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
-const FoodsByOrigin = () => (
-  <div>
-    <Header title="Explorar Origem" searcheble />
-
-    <Footer />
-  </div>
-);
+const FoodsByOrigin = () => {
+  return (
+    <div>
+      <Header title="Explorar Origem" searchble />
+      <Footer />
+    </div>
+  );
+};
 
 export default FoodsByOrigin;

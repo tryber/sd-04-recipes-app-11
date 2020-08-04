@@ -7,7 +7,7 @@ import DrinkCategory from '../Components/DrinkCategory';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 
-const Foods = () => {
+const Drinks = () => {
   const {
     drinks,
     setDrinks,
@@ -36,8 +36,7 @@ const Foods = () => {
 
   return (
     <div>
-      <Header title="Bebidas" searcheble />
-
+      <Header title="Bebidas" searchble />
       <div>
         <input
           type="button"
@@ -63,4 +62,4 @@ const Foods = () => {
   );
 };
 
-export default Foods;
+export default Drinks;

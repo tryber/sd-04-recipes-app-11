@@ -39,7 +39,7 @@ const Foods = () => {
 
   return (
     <div>
-      <Header title="Comidas" searcheble />
+      <Header title="Comidas" searchble />
       <div>
         <input
           type="button"
@@ -51,7 +51,10 @@ const Foods = () => {
           value="All"
         />
         {foodsCategories.map(({ strCategory }, index) => {
-          if (index < 5) return <FoodCategory key={strCategory} categoryName={strCategory} />;
+          if (index < 5)
+            return (
+              <FoodCategory key={strCategory} categoryName={strCategory} />
+            );
           return null;
         })}
       </div>

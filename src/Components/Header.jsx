@@ -1,30 +1,40 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import profileImg from '../images/profileIcon.svg';
-import searchImg from '../images/searchIcon.svg';
-import SearchInput from '../Components/SearchInput';
+import profile from '../images/profileIcon.svg';
+import searchIcon from '../images/searchIcon.svg';
 import { useState } from 'react';
+import SearchInput from './SearchInput';
 
-const Header = ({ title, searcheble }) => {
-  const [show, setShow] = useState(false);
+const Header = ({ title, searchble }) => {
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <header>
+    <div>
       <Link to="/perfil">
-        <img src={profileImg} alt="profile" data-testid="profile-top-btn" />
+        <img
+          src={profile}
+          data-testid="profile-top-btn"
+          alt="profile-top-btn"
+        />
       </Link>
       <h1 data-testid="page-title">{title}</h1>
-      {searcheble && (
-        <img
-          src={searchImg}
-          alt="lupinha"
-          data-testid="search-top-btn"
-          onClick={() => setShow(!show)}
-        />
+      {searchble && (
+        <button
+          style={{ background: 'none', border: 'none' }}
+          onClick={() => setShowSearch(!showSearch)}
+        >
+          <img src={searchIcon} alt="searchIcon" data-testid="search-top-btn" />
+        </button>
       )}
-      {show && <SearchInput />}
-    </header>
+      {showSearch && <SearchInput />}
+    </div>
   );
+};
+
+Header.propTypes = {
+  haveSearch: PropTypes.string.isRequired,
+  noIcon: PropTypes.bool.isRequired,
 };
 
 export default Header;
