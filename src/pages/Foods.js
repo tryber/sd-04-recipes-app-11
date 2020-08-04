@@ -33,9 +33,7 @@ const Foods = () => {
     });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -51,10 +49,11 @@ const Foods = () => {
           value="All"
         />
         {foodsCategories.map(({ strCategory }, index) => {
-          if (index < 5)
+          if (index < 5) {
             return (
               <FoodCategory key={strCategory} categoryName={strCategory} />
             );
+          }
           return null;
         })}
       </div>

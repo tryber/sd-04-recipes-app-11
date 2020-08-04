@@ -48,10 +48,11 @@ const Drinks = () => {
           value="All"
         />
         {drinksCategories.map(({ strCategory }, index) => {
-          if (index < 5)
+          if (index < 5) {
             return (
               <DrinkCategory key={strCategory} categoryName={strCategory} />
             );
+          }
           return null;
         })}
       </div>
