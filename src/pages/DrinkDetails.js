@@ -113,7 +113,7 @@ const DrinkDetails = (props) => {
       >
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
-      <div id="copied"></div>
+      <div id="copied" />
       <button
         type="button"
         onClick={() => {
@@ -133,15 +133,13 @@ const DrinkDetails = (props) => {
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
         .filter(({ ingredient }) => ingredient !== '')
-        .map(({ ingredient, measure }, index) => {
-          return (
-            <div>
-              <p data-testid={`${index}-ingredient-name-and-measure`}>
-                {`- ${ingredient} - ${measure}`}
-              </p>
-            </div>
-          );
-        })}
+        .map(({ ingredient, measure }, index) => (
+          <div>
+            <p data-testid={`${index}-ingredient-name-and-measure`}>
+              {`- ${ingredient} - ${measure}`}
+            </p>
+          </div>
+        ))}
       <h2>Instructions</h2>
       <p data-testid="instructions">{drinkDetails.strInstructions}</p>
       {/* <h2>Video</h2>
