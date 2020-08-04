@@ -176,7 +176,7 @@ const DrinkDetails = (props) => {
           data-testid="start-recipe-btn"
           value={isStarted ? 'Continuar Receita' : 'Iniciar Receita'}
           style={{ position: 'fixed', bottom: '0' }}
-          onclick={() => setIsStarted(true)}
+          onClick={() => setIsStarted(true)}
         />
       </Link>
     </div>
