@@ -6,6 +6,8 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [title, setTitle] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
 
   const [foods, setFoods] = useState([]);
   const [filteredFoods, setFilteredFoods] = useState([]);
@@ -23,8 +25,12 @@ const AppProvider = ({ children }) => {
   const context = {
     email,
     password,
+    title,
+    showSearch,
     setEmail,
     setPassword,
+    setTitle,
+    setShowSearch,
     foods,
     setFoods,
     drinks,

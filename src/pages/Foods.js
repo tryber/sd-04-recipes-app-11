@@ -5,6 +5,8 @@ import FoodCards from '../Components/FoodCards';
 import getFoods from '../services/getFoods';
 import getFoodsCategories from '../services/getFoodsCategories';
 import FoodCategory from '../Components/FoodCategory';
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 
 const Foods = () => {
   const {
@@ -31,12 +33,12 @@ const Foods = () => {
     });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
+      <Header title="Comidas" searchble />
+
       <div>
         <input
           type="button"
@@ -48,11 +50,16 @@ const Foods = () => {
           value="All"
         />
         {foodsCategories.map(({ strCategory }, index) => {
-          if (index < 5) return <FoodCategory key={strCategory} categoryName={strCategory} />;
+          if (index < 5) {
+            return (
+              <FoodCategory key={strCategory} categoryName={strCategory} />
+            );
+          }
           return null;
         })}
       </div>
       <FoodCards filteredFoods={filteredFoods} />
+      <Footer />
     </div>
   );
 };
