@@ -79,16 +79,17 @@ const FoodDetails = (props) => {
     <div>
       <img data-testid="recipe-photo" src={foodDetails.strMealThumb} alt={foodDetails.strMeal} />
       <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
-      <img
-        src={shareIcon}
-        alt="icon"
-        data-testid="share-btn"
+      <button
+        type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
           document.getElementById('copied').innerHTML = 'Link copiado!';
           // setTimeout(() => (document.getElementById('copied').innerHTML = ''), 5000);
         }}
-      />
+      >
+        {' '}
+        <img src={shareIcon} alt="icon" data-testid="share-btn" />
+      </button>
       <div id="copied"></div>
       <button type="button" onClick={() => setIsFavorite(!isFavorite)}>
         <img

@@ -83,23 +83,23 @@ const DrinkDetails = (props) => {
         alt={drinkDetails.strDrink}
       />
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
-      <img
-        src={shareIcon}
-        alt="icon"
-        data-testid="share-btn"
+      <button
+        type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
           document.getElementById('copied').innerHTML = 'Link copiado!';
           // setTimeout(() => document.getElementById('copied').innerHTML = '', 5000)
         }}
-      />
+      >
+        <img src={shareIcon} alt="icon" data-testid="share-btn" />
+      </button>
       <div id="copied"></div>
       <button type="button" onClick={() => setIsFavorite(!isFavorite)}>
-      <img
-        src={isFavorite ? blackHeartIcon : whiteHeartIcon}
-        alt="icon"
-        data-testid="favorite-btn"
-      />
+        <img
+          src={isFavorite ? blackHeartIcon : whiteHeartIcon}
+          alt="icon"
+          data-testid="favorite-btn"
+        />
       </button>
       <h4 data-testid="recipe-category">
         {`${drinkDetails.strCategory} ${drinkDetails.strAlcoholic} `}{' '}
