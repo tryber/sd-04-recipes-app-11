@@ -19,14 +19,27 @@ export function FoodCard({ food, index }) {
   );
 }
 
-// const copyToClipboard = () => {
-//   const el = document.createElement('textarea');
-//   el.value = window.location.href;
-//   document.body.appendChild(el);
-//   el.select();
-//   document.execCommand('copy');
-//   document.body.removeChild(el);
-// };
+function favoriteToLocalStorage(recipe) {
+  const {
+    idDrink: id,
+    strCategory: category,
+    strAlcoholic: alcoholicOrNot,
+    strDrink: name,
+    strDrinkThumb: image,
+  } = recipe;
+  const type = 'bebida';
+  const area = '';
+
+  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
+    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+    : [];
+
+  const favoriteRecipes = [
+    ...currentFavoriteRecipes,
+    { id, type, area, category, alcoholicOrNot, name, image },
+  ];
+  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+}
 
 const DrinkDetails = (props) => {
   const { loading, setLoading, drinkDetails, setDrinkDetails, foods, setFoods } = useContext(
@@ -34,6 +47,7 @@ const DrinkDetails = (props) => {
   );
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
     const loadRecommended = async () => {
@@ -45,13 +59,19 @@ const DrinkDetails = (props) => {
     const loadDrink = async () => {
       const { id } = props.match.params;
       const response = await getDrinkById(id);
-      console.log(response);
       await setDrinkDetails(response.drinks[0]);
       await setLoading(false);
     };
 
+    const loadFavorite = () => {
+      const { id } = props.match.params;
+      const currentFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      setIsFavorite(currentFavorite.some((curr) => curr.id === id));
+    };
+
     loadRecommended().then(() => {
       loadDrink();
+      if (localStorage.getItem('favoriteRecipes')) loadFavorite();
     });
   }, []);
 
@@ -94,7 +114,13 @@ const DrinkDetails = (props) => {
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
       <div id="copied"></div>
-      <button type="button" onClick={() => setIsFavorite(!isFavorite)}>
+      <button
+        type="button"
+        onClick={() => {
+          favoriteToLocalStorage(drinkDetails);
+          setIsFavorite(!isFavorite);
+        }}
+      >
         <img
           src={isFavorite ? blackHeartIcon : whiteHeartIcon}
           alt="icon"
@@ -126,7 +152,6 @@ const DrinkDetails = (props) => {
       <div style={{ display: 'flex' }}>
         {firstSix.map((food, index) => {
           if (index < 2) {
-            console.log('food', index, food);
             return (
               <Link to={`/comidas/${food.idMeal}`}>
                 <div>
@@ -149,16 +174,11 @@ const DrinkDetails = (props) => {
         <input
           type="button"
           data-testid="start-recipe-btn"
-          value="Iniciar Receita"
+          value={isStarted ? 'Continuar Receita' : 'Iniciar Receita'}
           style={{ position: 'fixed', bottom: '0' }}
+          onclick={() => setIsStarted(true)}
         />
       </Link>
-      <input
-        type="button"
-        data-testid="continue-recipe-btn"
-        value="Continuar Receita"
-        style={{ display: 'none' }}
-      />
     </div>
   );
 };
