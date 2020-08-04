@@ -36,8 +36,7 @@ const Drinks = () => {
 
   return (
     <div>
-     <Header haveSearch />
-     <h1 data-testid="page-title">Bebidas</h1>
+      <Header title="Bebidas" searchble />
       <div>
         <input
           type="button"
@@ -49,7 +48,11 @@ const Drinks = () => {
           value="All"
         />
         {drinksCategories.map(({ strCategory }, index) => {
-          if (index < 5) return <DrinkCategory key={strCategory} categoryName={strCategory} />;
+          if (index < 5) {
+            return (
+              <DrinkCategory key={strCategory} categoryName={strCategory} />
+            );
+          }
           return null;
         })}
       </div>
@@ -60,4 +63,4 @@ const Drinks = () => {
   );
 };
 
-export default Foods;
+export default Drinks;

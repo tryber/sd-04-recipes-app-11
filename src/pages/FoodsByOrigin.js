@@ -5,11 +5,8 @@ import Footer from '../Components/Footer';
 const FoodsByOrigin = () => {
   return (
     <div>
-          <Header haveSearch />
-
-      <h1 data-testid="page-title">Explorar Origem</h1>
-        <Footer />
-
+      <Header title="Explorar Origem" searchble />
+      <Footer />
     </div>
   );
 };

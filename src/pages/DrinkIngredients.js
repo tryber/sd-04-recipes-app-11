@@ -5,9 +5,8 @@ import Footer from '../Components/Footer';
 const DrinkIngredients = () => {
   return (
     <div>
-          <Header noIcon />
-      <h1 data-testid="page-title">Explorar Ingredientes</h1>
-        <Footer />
+      <Header title="Explorar Ingredientes" />
+      <Footer />
     </div>
   );
 };

@@ -33,15 +33,12 @@ const Foods = () => {
     });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
-          <Header haveSearch="true" />
+      <Header title="Comidas" searchble />
 
-          <h1 data-testid="page-title">Comidas</h1>
       <div>
         <input
           type="button"
@@ -53,7 +50,11 @@ const Foods = () => {
           value="All"
         />
         {foodsCategories.map(({ strCategory }, index) => {
-          if (index < 5) return <FoodCategory key={strCategory} categoryName={strCategory} />;
+          if (index < 5) {
+            return (
+              <FoodCategory key={strCategory} categoryName={strCategory} />
+            );
+          }
           return null;
         })}
       </div>

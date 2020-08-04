@@ -4,9 +4,8 @@ import Header from '../Components/Header';
 const FavoriteRecipes = () => {
   return (
     <div>
-          <Header />
+      <Header title="Receitas Favoritas" />
 
-      <h1 data-testid="page-title">Receitas Favoritas</h1>
     </div>
   );
 };
