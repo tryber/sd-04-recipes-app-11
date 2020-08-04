@@ -2,12 +2,12 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import getDrinkById from '../services/getDrinkById';
+import copyToClipboard from 'clipboard-copy';
 import getFoods from '../services/getFoods';
 import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import copyToClipboard from 'clipboard-copy';
 
 export function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
@@ -87,8 +87,8 @@ const DrinkDetails = (props) => {
         src={shareIcon}
         alt="icon"
         data-testid="share-btn"
-        onClick={async () => {
-          await copyToClipboard(window.location.href);
+        onClick={() => {
+          copyToClipboard(window.location.href);
           document.getElementById('copied').innerHTML = 'Link copiado!';
           // setTimeout(() => document.getElementById('copied').innerHTML = '', 5000)
         }}

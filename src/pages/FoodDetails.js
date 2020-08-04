@@ -83,8 +83,8 @@ const FoodDetails = (props) => {
         src={shareIcon}
         alt="icon"
         data-testid="share-btn"
-        onClick={async () => {
-          await copyToClipboard(window.location.href);
+        onClick={() => {
+          copyToClipboard(window.location.href);
           document.getElementById('copied').innerHTML = 'Link copiado!';
           // setTimeout(() => (document.getElementById('copied').innerHTML = ''), 5000);
         }}
