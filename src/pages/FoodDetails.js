@@ -2,13 +2,13 @@ import React, { useEffect, useContext, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import copyToClipboard from 'clipboard-copy';
 import getFoodById from '../services/getFoodById';
 import getDrinks from '../services/getDrinks';
 import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import copyToClipboard from 'clipboard-copy';
 
 export function DrinkCard({ drink, index }) {
   const { strDrinkThumb, strDrink } = drink;
@@ -90,12 +90,13 @@ const FoodDetails = (props) => {
         }}
       />
       <div id="copied"></div>
-      <img
-        src={isFavorite ? blackHeartIcon : whiteHeartIcon}
-        alt="icon"
-        data-testid="favorite-btn"
-        onClick={() => setIsFavorite(!isFavorite)}
-      />
+      <button type="button" onClick={() => setIsFavorite(!isFavorite)}>
+        <img
+          src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
+          alt="icon"
+          data-testid="favorite-btn"
+        />
+      </button>
       <h4 data-testid="recipe-category">{foodDetails.strCategory} </h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure

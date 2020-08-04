@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import getDrinkById from '../services/getDrinkById';
 import copyToClipboard from 'clipboard-copy';
+import getDrinkById from '../services/getDrinkById';
 import getFoods from '../services/getFoods';
 import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
@@ -94,12 +94,13 @@ const DrinkDetails = (props) => {
         }}
       />
       <div id="copied"></div>
+      <button type="button" onClick={() => setIsFavorite(!isFavorite)}>
       <img
         src={isFavorite ? blackHeartIcon : whiteHeartIcon}
         alt="icon"
         data-testid="favorite-btn"
-        onClick={() => setIsFavorite(!isFavorite)}
       />
+      </button>
       <h4 data-testid="recipe-category">
         {`${drinkDetails.strCategory} ${drinkDetails.strAlcoholic} `}{' '}
       </h4>
@@ -165,6 +166,6 @@ const DrinkDetails = (props) => {
 export default DrinkDetails;
 
 FoodCard.propTypes = {
-  drink: PropTypes.objectOf(PropTypes.any).isRequired,
+  food: PropTypes.objectOf(PropTypes.any).isRequired,
   index: PropTypes.number.isRequired,
 };
