@@ -12,10 +12,12 @@ const AppProvider = ({ children }) => {
   const [foods, setFoods] = useState([]);
   const [filteredFoods, setFilteredFoods] = useState([]);
   const [foodsCategories, setFoodsCategories] = useState([]);
+  const [foodDetails, setFoodDetails] = useState({});
 
   const [drinks, setDrinks] = useState([]);
   const [filteredDrinks, setFilteredDrinks] = useState([]);
   const [drinksCategories, setDrinksCategories] = useState([]);
+  const [drinkDetails, setDrinkDetails] = useState({});
 
   const [loading, setLoading] = useState(true);
   const [filteredWith, setFilteredWith] = useState('All');
@@ -45,6 +47,10 @@ const AppProvider = ({ children }) => {
     setFilteredDrinks,
     filteredWith,
     setFilteredWith,
+    foodDetails,
+    setFoodDetails,
+    drinkDetails,
+    setDrinkDetails,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
