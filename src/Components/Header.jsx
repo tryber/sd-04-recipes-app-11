@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
@@ -8,7 +7,7 @@ import SearchInput from './SearchInput';
 
 const Header = ({ title, searchble }) => {
   const [showSearch, setShowSearch] = useState(false);
-
+    
   return (
     <div>
       <Link to="/perfil">
@@ -32,9 +31,9 @@ const Header = ({ title, searchble }) => {
   );
 };
 
-Header.propTypes = {
-  haveSearch: PropTypes.string.isRequired,
-  noIcon: PropTypes.bool.isRequired,
-};
+// Header.propTypes = {
+// haveSearch: PropTypes.string.isRequired,
+// noIcon: PropTypes.bool.isRequired,
+// };
 
 export default Header;
