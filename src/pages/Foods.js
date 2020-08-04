@@ -38,6 +38,7 @@ const Foods = () => {
   return (
     <div>
       <Header title="Comidas" searchble />
+
       <div>
         <input
           type="button"

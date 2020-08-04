@@ -8,6 +8,7 @@ import SearchInput from './SearchInput';
 
 const Header = ({ title, searchble }) => {
   const [showSearch, setShowSearch] = useState(false);
+
   return (
     <div>
       <Link to="/perfil">
