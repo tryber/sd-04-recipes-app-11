@@ -5,6 +5,7 @@ import getDrinks from '../services/getDrinks';
 import getDrinksCategories from '../services/getDrinksCategories';
 import DrinkCategory from '../Components/DrinkCategory';
 import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 
 const Foods = () => {
   const {
@@ -35,6 +36,8 @@ const Foods = () => {
 
   return (
     <div>
+      <Header title="Bebidas" searcheble />
+
       <div>
         <input
           type="button"
@@ -46,7 +49,10 @@ const Foods = () => {
           value="All"
         />
         {drinksCategories.map(({ strCategory }, index) => {
-          if (index < 5) return <DrinkCategory key={strCategory} categoryName={strCategory} />;
+          if (index < 5)
+            return (
+              <DrinkCategory key={strCategory} categoryName={strCategory} />
+            );
           return null;
         })}
       </div>

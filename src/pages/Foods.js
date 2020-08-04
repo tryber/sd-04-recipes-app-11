@@ -6,6 +6,7 @@ import getFoods from '../services/getFoods';
 import getFoodsCategories from '../services/getFoodsCategories';
 import FoodCategory from '../Components/FoodCategory';
 import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 
 const Foods = () => {
   const {
@@ -38,6 +39,7 @@ const Foods = () => {
 
   return (
     <div>
+      <Header title="Comidas" searcheble />
       <div>
         <input
           type="button"
