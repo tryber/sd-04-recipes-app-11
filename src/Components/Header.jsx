@@ -27,7 +27,7 @@ const Header = ({ title, searchble }) => {
           <img src={searchIcon} alt="searchIcon" data-testid="search-top-btn" />
         </button>
       )}
-      {showSearch && <SearchInput />}
+      {showSearch && <SearchInput title={title}/>}
     </div>
   );
 };
