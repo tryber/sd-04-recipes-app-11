@@ -5,30 +5,49 @@ import filterByFirstLetterFood from '../services/filterByFirstLetterFood';
 import filterByNameDrinks from '../services/filterByNameDrink';
 import filterByDrinksFirstLetter from '../services/filterByDrinksFirstLetter';
 
+const theMessage = () => {
+  alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+};
+
 const findData = async (filter, titulo, type, setFoods, setDrinks) => {
   if (titulo === 'Comidas') {
     if (type === 'ingrediente') {
       const filteredIngredients = await filterByIngredientsFoods(filter);
-      console.log(filteredIngredients);
-      return setFoods(filteredIngredients.meals ? filteredIngredients.meals : []);
+      if (!filteredIngredients.meals) {
+        theMessage();
+      } else {
+        return setFoods(filteredIngredients.meals);
+      }
     }
     if (type === 'nome') {
       const filteredIngredients = await filterByFoodsName(filter);
-      console.log(filteredIngredients);
-      return setFoods(filteredIngredients.meals ? filteredIngredients.meals : []);
+      if (!filteredIngredients.meals) {
+        theMessage();
+      } else {
+        return setFoods(filteredIngredients.meals);
+      }
     }
     if (type === 'primeira-letra') {
       const filteredIngredients = await filterByFirstLetterFood(filter);
-      return setFoods(filteredIngredients.meals ? filteredIngredients.meals : []);
+      if (!filteredIngredients.meals) {
+        theMessage();
+      } else {
+        return setFoods(filteredIngredients.meals);
+      }
     }
   }
 
   if (titulo === 'Bebidas') {
-    console.log('entrou em bebidas');
     if (type === 'ingrediente') {
       const filteredIngredients = await filterByIngredientsDrinks(filter);
-      return setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
+      console.log(filteredIngredients);
+      if (!filteredIngredients.drinks) {
+        theMessage();
+      } else {
+        return setDrinks(filteredIngredients.drinks);
+      }
     }
+
     if (type === 'nome') {
       const filteredIngredients = await filterByNameDrinks(filter);
       return setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);

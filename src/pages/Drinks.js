@@ -56,7 +56,7 @@ const Drinks = () => {
           return null;
         })}
       </div>
-      {console.log('filteredDrinks', filteredDrinks)}
+      {/* {console.log('filteredDrinks', filteredDrinks)} */}
       <DrinksCards filteredDrinks={filteredDrinks} />
       <Footer />
     </div>
