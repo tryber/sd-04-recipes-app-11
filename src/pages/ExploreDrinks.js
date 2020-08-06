@@ -6,7 +6,6 @@ import Footer from '../Components/Footer';
 const ExploreDrinks = () => (
   <div>
     <Header title="Explorar Bebidas" />
-    <h1 data-testid="page-title">Explorar Bebidas</h1>
     <Link to="/explorar/bebidas/ingredientes">
       <button data-testid="explore-by-ingredient">Por Ingredientes</button>
     </Link>
