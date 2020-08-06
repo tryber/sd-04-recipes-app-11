@@ -9,54 +9,60 @@ const theMessage = () => {
   alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
 };
 
+function setContextFoods(filteredIngredients, setFoods) {
+  if (!filteredIngredients.meals) {
+    theMessage();
+  } else {
+    return setFoods(filteredIngredients.meals);
+  }
+}
+
+async function filterFoods(filter, type, setFoods) {
+  if (type === 'ingrediente') {
+    const filteredIngredients = await filterByIngredientsFoods(filter);
+    setContextFoods(filteredIngredients, setFoods);
+  }
+
+  if (type === 'nome') {
+    const filteredIngredients = await filterByFoodsName(filter);
+    setContextFoods(filteredIngredients, setFoods);
+  }
+
+  if (type === 'primeira-letra') {
+    const filteredIngredients = await filterByFirstLetterFood(filter);
+    setContextFoods(filteredIngredients, setFoods);
+  }
+}
+
+function setContextDrinks(filteredIngredients, setDrinks) {
+  if (!filteredIngredients.drinks) {
+    theMessage();
+    return setDrinks([]);
+  } else {
+    return setDrinks(filteredIngredients.drinks);
+  }
+}
+
+async function filterDrinks(filter, type, setDrinks) {
+  if (type === 'ingrediente') {
+    const filteredIngredients = await filterByIngredientsDrinks(filter);
+    setContextDrinks(filteredIngredients, setDrinks);
+  }
+
+  if (type === 'nome') {
+    const filteredIngredients = await filterByNameDrinks(filter);
+    setContextDrinks(filteredIngredients, setDrinks);
+  }
+
+  if (type === 'primeira-letra') {
+    const filteredIngredients = await filterByDrinksFirstLetter(filter);
+    setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
+  }
+}
+
 const findData = async (filter, titulo, type, setFoods, setDrinks) => {
-  if (titulo === 'Comidas') {
-    if (type === 'ingrediente') {
-      const filteredIngredients = await filterByIngredientsFoods(filter);
-      if (!filteredIngredients.meals) {
-        theMessage();
-      } else {
-        return setFoods(filteredIngredients.meals);
-      }
-    }
-    if (type === 'nome') {
-      const filteredIngredients = await filterByFoodsName(filter);
-      if (!filteredIngredients.meals) {
-        theMessage();
-      } else {
-        return setFoods(filteredIngredients.meals);
-      }
-    }
-    if (type === 'primeira-letra') {
-      const filteredIngredients = await filterByFirstLetterFood(filter);
-      if (!filteredIngredients.meals) {
-        theMessage();
-      } else {
-        return setFoods(filteredIngredients.meals);
-      }
-    }
-  }
-
-  if (titulo === 'Bebidas') {
-    if (type === 'ingrediente') {
-      const filteredIngredients = await filterByIngredientsDrinks(filter);
-      console.log(filteredIngredients);
-      if (!filteredIngredients.drinks) {
-        theMessage();
-      } else {
-        return setDrinks(filteredIngredients.drinks);
-      }
-    }
-
-    if (type === 'nome') {
-      const filteredIngredients = await filterByNameDrinks(filter);
-      return setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
-    }
-    if (type === 'primeira-letra') {
-      const filteredIngredients = await filterByDrinksFirstLetter(filter);
-      return setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
-    }
-  }
+  if (titulo === 'Comidas') return filterFoods(filter, type, setFoods);
+  if (titulo === 'Bebidas') return filterDrinks(filter, type, setDrinks);
 };
 
 export default findData;
