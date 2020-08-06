@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -23,7 +24,7 @@ function FoodCard({ recipe, index }) {
         <img
           data-testid={`${index}-horizontal-image`}
           src={image}
-          alt={name}
+          alt={`${name} - ${category}`}
           style={{ width: '100%' }}
         />
         <p data-testid={`${index}-horizontal-top-text`}>{`${area} - ${category}`}</p>
@@ -41,7 +42,6 @@ function FoodCard({ recipe, index }) {
         }}
       />
       <div id="copied" />
-
       <input
         type="image"
         data-testid={`${index}-horizontal-favorite-btn`}
@@ -49,7 +49,7 @@ function FoodCard({ recipe, index }) {
           removeFromLocalStorage(id);
         }}
         src={blackHeartIcon}
-        alt="icon"
+        alt="iconblack"
       />
     </div>
   );
@@ -133,3 +133,13 @@ const FavoriteRecipes = () => {
 };
 
 export default FavoriteRecipes;
+
+FoodCard.propTypes = {
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+DrinkCard.propTypes = {
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  index: PropTypes.number.isRequired,
+};
