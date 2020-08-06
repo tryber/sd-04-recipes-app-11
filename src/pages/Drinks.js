@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { Redirect } from 'react-router-dom';
 import DrinksCards from '../Components/DrinksCards';
 import getDrinks from '../services/getDrinks';
 import getDrinksCategories from '../services/getDrinksCategories';
 import DrinkCategory from '../Components/DrinkCategory';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
-import { Redirect } from 'react-router-dom';
 
 const Drinks = () => {
   const {
@@ -34,7 +34,7 @@ const Drinks = () => {
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if(filteredDrinks.length === 1) return <Redirect to={`/bebidas/${filteredDrinks[0].idDrink}`} />
+  if (filteredDrinks.length === 1) return <Redirect to={`/bebidas/${filteredDrinks[0].idDrink}`} />;
 
   return (
     <div>
@@ -51,9 +51,7 @@ const Drinks = () => {
         />
         {drinksCategories.map(({ strCategory }, index) => {
           if (index < 5) {
-            return (
-              <DrinkCategory key={strCategory} categoryName={strCategory} />
-            );
+            return <DrinkCategory key={strCategory} categoryName={strCategory} />;
           }
           return null;
         })}

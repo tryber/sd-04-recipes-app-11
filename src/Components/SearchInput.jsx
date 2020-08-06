@@ -31,7 +31,6 @@ const SearchInput = (props) => {
 
   /*  useEffect(() => {
     if(filteredFoods.length === 0 && title === 'Comidas') return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    
   }); */
 
   async function findData(filter, title, type) {
@@ -71,12 +70,11 @@ const SearchInput = (props) => {
 
   function fillMessage(letter) {
     setFletter(letter);
-    if (fLetter.length > 0 && filteredWith === 'primeira-letra')
-      return alert('Sua busca deve conter somente 1 (um) caracter');
+    if (fLetter.length > 0 && filteredWith === 'primeira-letra') {
+      alert('Sua busca deve conter somente 1 (um) caracter');
+    }
   }
 
-  //console.log(fLetter);
-  console.log(filteredWith);
   return (
     <div>
       <input
