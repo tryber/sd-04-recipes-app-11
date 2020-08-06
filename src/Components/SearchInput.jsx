@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
@@ -8,6 +8,7 @@ import filterByFoodsName from '../services/filterByFoodsName';
 import filterByFirstLetterFood from '../services/filterByFirstLetterFood';
 import filterByNameDrinks from '../services/filterByNameDrink';
 import filterByDrinksFirstLetter from '../services/filterByDrinksFirstLetter';
+import findData from '../services/findDataFromRadio';
 
 const SearchInput = (props) => {
   const {
@@ -31,41 +32,6 @@ const SearchInput = (props) => {
   /*  useEffect(() => {
     if(filteredFoods.length === 0 && title === 'Comidas') return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }); */
-
-  async function findData(filter, title, type) {
-    if (title === 'Comidas') {
-      if (type === 'ingrediente') {
-        const filteredIngredients = await filterByIngredientsFoods(filter);
-        console.log(filteredIngredients);
-        return setFilteredFoods(filteredIngredients.meals ? filteredIngredients.meals : []);
-      }
-      if (type === 'nome') {
-        const filteredIngredients = await filterByFoodsName(filter);
-        console.log(filteredIngredients);
-        return setFilteredFoods(filteredIngredients.meals ? filteredIngredients.meals : []);
-      }
-      if (type === 'primeira-letra') {
-        const filteredIngredients = await filterByFirstLetterFood(filter);
-        return setFilteredFoods(filteredIngredients.meals ? filteredIngredients.meals : []);
-      }
-    }
-
-    if (title === 'Bebidas') {
-      console.log('entrou em bebidas');
-      if (type === 'ingrediente') {
-        const filteredIngredients = await filterByIngredientsDrinks(filter);
-        return setFilteredDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
-      }
-      if (type === 'nome') {
-        const filteredIngredients = await filterByNameDrinks(filter);
-        return setFilteredDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
-      }
-      if (type === 'primeira-letra') {
-        const filteredIngredients = await filterByDrinksFirstLetter(filter);
-        return setFilteredDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
-      }
-    }
-  }
 
   function fillMessage(letter) {
     setFletter(letter);
@@ -115,7 +81,7 @@ const SearchInput = (props) => {
       <button
         data-testid="exec-search-btn"
         onClick={() => {
-          findData(fLetter, props.title, filteredWith);
+          findData(fLetter, props.title, filteredWith, setFilteredFoods, setFilteredDrinks);
           // if(filteredDrinks === [] || filteredFoods === [] ) return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         }}
       >
@@ -127,6 +93,6 @@ const SearchInput = (props) => {
 
 SearchInput.propTypes = {
   title: PropTypes.string.isRequired,
-}
+};
 
 export default SearchInput;
