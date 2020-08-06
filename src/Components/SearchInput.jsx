@@ -10,9 +10,7 @@ const SearchInput = (props) => {
     setFilteredWith,
     fLetter,
     setFletter,
-    // filteredFoods,
     setFilteredFoods,
-    // filteredDrinks,
     setFilteredDrinks,
   } = useContext(AppContext);
 
