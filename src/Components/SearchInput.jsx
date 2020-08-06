@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import filterByFirstLetterFood from '../services/filterByFirstLetterFood';
 import findData from '../services/findDataFromRadio';
 
 const SearchInput = (props) => {
@@ -23,12 +22,6 @@ const SearchInput = (props) => {
   function firstLetter() {
     setFilteredWith('primeira-letra');
   }
-
-  /*  useEffect(() => {
-    if(filteredFoods.length === 0 && title === 'Comidas') 
-    return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-  }); 
-  */
 
   function fillMessage(letter) {
     setFletter(letter);

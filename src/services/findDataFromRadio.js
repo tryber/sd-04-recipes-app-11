@@ -12,9 +12,9 @@ const theMessage = () => {
 function setContextFoods(filteredIngredients, setFoods) {
   if (!filteredIngredients.meals) {
     theMessage();
-  } else {
-    return setFoods(filteredIngredients.meals);
+    return setFoods([]);
   }
+  return setFoods(filteredIngredients.meals);
 }
 
 async function filterFoods(filter, type, setFoods) {
@@ -38,9 +38,8 @@ function setContextDrinks(filteredIngredients, setDrinks) {
   if (!filteredIngredients.drinks) {
     theMessage();
     return setDrinks([]);
-  } else {
-    return setDrinks(filteredIngredients.drinks);
   }
+  return setDrinks(filteredIngredients.drinks);
 }
 
 async function filterDrinks(filter, type, setDrinks) {
