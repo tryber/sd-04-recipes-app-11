@@ -1,7 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { func } from 'prop-types';
 import filterByIngredientsFoods from '../services/filterByIngredient';
 import filterByIngredientsDrinks from '../services/filterByIngredientsDrinks';
 import filterByFoodsName from '../services/filterByFoodsName';
