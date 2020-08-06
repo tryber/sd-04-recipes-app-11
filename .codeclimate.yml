@@ -17,7 +17,7 @@ checks:
       threshold: 20
   method-lines:
     config:
-      threshold: 150
+      threshold: 250
   nested-control-flow:
     config:
       threshold: 4

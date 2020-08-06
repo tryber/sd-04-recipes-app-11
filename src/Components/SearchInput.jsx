@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
@@ -7,7 +8,6 @@ import filterByFoodsName from '../services/filterByFoodsName';
 import filterByFirstLetterFood from '../services/filterByFirstLetterFood';
 import filterByNameDrinks from '../services/filterByNameDrink';
 import filterByDrinksFirstLetter from '../services/filterByDrinksFirstLetter';
-import { useEffect } from 'react';
 
 const SearchInput = (props) => {
   const {
@@ -15,9 +15,9 @@ const SearchInput = (props) => {
     setFilteredWith,
     fLetter,
     setFletter,
-    filteredFoods,
+    // filteredFoods,
     setFilteredFoods,
-    filteredDrinks,
+    // filteredDrinks,
     setFilteredDrinks,
   } = useContext(AppContext);
 
@@ -124,5 +124,9 @@ const SearchInput = (props) => {
     </div>
   );
 };
+
+SearchInput.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export default SearchInput;
