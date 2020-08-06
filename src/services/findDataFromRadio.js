@@ -59,9 +59,10 @@ async function filterDrinks(filter, type, setDrinks) {
   }
 }
 
-async function findData (filter, titulo, type, setFoods, setDrinks) {
-  if (titulo === 'Comidas') return filterFoods(filter, type, setFoods);
-  if (titulo === 'Bebidas') return filterDrinks(filter, type, setDrinks);
-};
+async function findData(filter, titulo, type, setFoods, setDrinks) {
+  return titulo === 'Comidas'
+    ? filterFoods(filter, type, setFoods)
+    : filterDrinks(filter, type, setDrinks);
+}
 
 export default findData;
