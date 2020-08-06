@@ -59,7 +59,7 @@ async function filterDrinks(filter, type, setDrinks) {
   }
 }
 
-const findData = async (filter, titulo, type, setFoods, setDrinks) => {
+async function findData (filter, titulo, type, setFoods, setDrinks) {
   if (titulo === 'Comidas') return filterFoods(filter, type, setFoods);
   if (titulo === 'Bebidas') return filterDrinks(filter, type, setDrinks);
 };
