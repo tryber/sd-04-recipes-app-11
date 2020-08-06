@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import copyToClipboard from 'clipboard-copy';
 import Header from '../Components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import copyToClipboard from 'clipboard-copy';
-import { Link } from 'react-router-dom';
 
 function removeFromLocalStorage(recipeId) {
   const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
