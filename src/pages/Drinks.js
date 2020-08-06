@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
-import { AppContext } from '../context/AppContext';
 import { Redirect } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 import DrinksCards from '../Components/DrinksCards';
 import getDrinks from '../services/getDrinks';
 import getDrinksCategories from '../services/getDrinksCategories';

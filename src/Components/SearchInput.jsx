@@ -2,12 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import filterByIngredientsFoods from '../services/filterByIngredient';
-import filterByIngredientsDrinks from '../services/filterByIngredientsDrinks';
-import filterByFoodsName from '../services/filterByFoodsName';
 import filterByFirstLetterFood from '../services/filterByFirstLetterFood';
-import filterByNameDrinks from '../services/filterByNameDrink';
-import filterByDrinksFirstLetter from '../services/filterByDrinksFirstLetter';
 import findData from '../services/findDataFromRadio';
 
 const SearchInput = (props) => {
@@ -30,8 +25,10 @@ const SearchInput = (props) => {
   }
 
   /*  useEffect(() => {
-    if(filteredFoods.length === 0 && title === 'Comidas') return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-  }); */
+    if(filteredFoods.length === 0 && title === 'Comidas') 
+    return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  }); 
+  */
 
   function fillMessage(letter) {
     setFletter(letter);
@@ -82,7 +79,8 @@ const SearchInput = (props) => {
         data-testid="exec-search-btn"
         onClick={() => {
           findData(fLetter, props.title, filteredWith, setFilteredFoods, setFilteredDrinks);
-          // if(filteredDrinks === [] || filteredFoods === [] ) return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+          // if(filteredDrinks === [] || filteredFoods === [] )
+          // return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         }}
       >
         Buscar

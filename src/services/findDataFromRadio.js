@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import React from 'react';
 import filterByIngredientsFoods from '../services/filterByIngredient';
 import filterByIngredientsDrinks from '../services/filterByIngredientsDrinks';
 import filterByFoodsName from '../services/filterByFoodsName';
@@ -7,9 +5,7 @@ import filterByFirstLetterFood from '../services/filterByFirstLetterFood';
 import filterByNameDrinks from '../services/filterByNameDrink';
 import filterByDrinksFirstLetter from '../services/filterByDrinksFirstLetter';
 
-
-const findData = async(filter, titulo, type, setFoods, setDrinks) => {
-
+const findData = async (filter, titulo, type, setFoods, setDrinks) => {
   if (titulo === 'Comidas') {
     if (type === 'ingrediente') {
       const filteredIngredients = await filterByIngredientsFoods(filter);
@@ -42,6 +38,6 @@ const findData = async(filter, titulo, type, setFoods, setDrinks) => {
       return setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
     }
   }
-}
+};
 
 export default findData;
