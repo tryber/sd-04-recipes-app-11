@@ -55,7 +55,7 @@ async function filterDrinks(filter, type, setDrinks) {
 
   if (type === 'primeira-letra') {
     const filteredIngredients = await filterByDrinksFirstLetter(filter);
-    setDrinks(filteredIngredients.drinks ? filteredIngredients.drinks : []);
+    setContextDrinks(filteredIngredients, setDrinks);
   }
 }
 
