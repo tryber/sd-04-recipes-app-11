@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
 import PropTypes from 'prop-types';
 import copyToClipboard from 'clipboard-copy';
+import { AppContext } from '../context/AppContext';
 import Header from '../Components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
