@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import copyToClipboard from 'clipboard-copy';
+import { AppContext } from '../context/AppContext';
 import Header from '../Components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-function removeFromLocalStorage(recipeId) {
-  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
-    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
-    : [];
-
+function removeFromLocalStorage(recipeId, setFavorites) {
+  const currentFavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  console.log(currentFavoriteRecipes);
   const updatedFavoriteRecipes = currentFavoriteRecipes.filter(({ id }) => id !== recipeId);
   localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavoriteRecipes));
+  setFavorites(updatedFavoriteRecipes);
 }
 
 function FoodCard({ recipe, index }) {
   const { id, area, category, name, image } = recipe;
+  const { setFavorites } = useContext(AppContext);
 
   return (
     <div data-testid={`${index}-recipe-card`}>
@@ -46,7 +47,7 @@ function FoodCard({ recipe, index }) {
         type="image"
         data-testid={`${index}-horizontal-favorite-btn`}
         onClick={() => {
-          removeFromLocalStorage(id);
+          removeFromLocalStorage(id, setFavorites);
         }}
         src={blackHeartIcon}
         alt="iconblack"
@@ -57,6 +58,7 @@ function FoodCard({ recipe, index }) {
 
 function DrinkCard({ recipe, index }) {
   const { id, alcoholicOrNot, name, image } = recipe;
+  const { setFavorites } = useContext(AppContext);
 
   return (
     <div data-testid={`${index}-recipe-card`}>
@@ -85,7 +87,7 @@ function DrinkCard({ recipe, index }) {
         type="image"
         data-testid={`${index}-horizontal-favorite-btn`}
         onClick={() => {
-          removeFromLocalStorage(id);
+          removeFromLocalStorage(id, setFavorites);
         }}
         src={blackHeartIcon}
         alt="icon"
@@ -95,12 +97,12 @@ function DrinkCard({ recipe, index }) {
 }
 
 const FavoriteRecipes = () => {
-  const favoritesStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const [favorites, setFavorites] = useState([]);
+  const { favorites, setFavorites } = useContext(AppContext);
+  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
+    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+    : [];
 
-  useEffect(() => {
-    setFavorites(favoritesStorage);
-  }, []);
+  console.log(favorites);
 
   return (
     <div>
@@ -108,19 +110,19 @@ const FavoriteRecipes = () => {
       <input
         type="button"
         data-testid="filter-by-all-btn"
-        onClick={() => setFavorites(favoritesStorage)}
+        onClick={() => setFavorites(currentFavoriteRecipes)}
         value="All"
       />
       <input
         type="button"
         data-testid="filter-by-food-btn"
-        onClick={() => setFavorites(favoritesStorage.filter((recipe) => recipe.type === 'comida'))}
+        onClick={() => setFavorites(currentFavoriteRecipes.filter((recipe) => recipe.type === 'comida'))}
         value="Comidas"
       />
       <input
         type="button"
         data-testid="filter-by-drink-btn"
-        onClick={() => setFavorites(favoritesStorage.filter((recipe) => recipe.type === 'bebida'))}
+        onClick={() => setFavorites(currentFavoriteRecipes.filter((recipe) => recipe.type === 'bebida'))}
         value="Bebidas"
       />
       {favorites.map((recipe, index) => {
