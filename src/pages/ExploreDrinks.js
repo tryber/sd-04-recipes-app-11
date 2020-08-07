@@ -9,7 +9,6 @@ const ExploreDrinks = () => {
 
   async function randomDrink() {
     const randomItem = await randomRouteDrink();
-    console.log(randomItem);
     history.push(`/bebidas/${randomItem}`);
   }
 
