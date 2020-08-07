@@ -6,7 +6,7 @@ import randomRouteFood from '../services/randomRouteFood';
 
 const ExploreFoods = () => {
   const history = useHistory();
-
+  // randomItem recebe o resultado da API
   async function randomFood() {
     const randomItem = await randomRouteFood();
     history.push(`/comidas/${randomItem}`);
