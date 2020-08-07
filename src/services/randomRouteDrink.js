@@ -1,4 +1,5 @@
 const DRINKS_CATEGORIES_URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+/* Busca bebida aleatória */
 
 export default function fetchRandomDrink() {
   return fetch(DRINKS_CATEGORIES_URL)

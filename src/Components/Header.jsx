@@ -12,11 +12,7 @@ const Header = ({ title, searchble }) => {
   return (
     <div>
       <Link to="/perfil">
-        <img
-          src={profile}
-          data-testid="profile-top-btn"
-          alt="profile-top-btn"
-        />
+        <img src={profile} data-testid="profile-top-btn" alt="profile-top-btn" />
       </Link>
       <h1 data-testid="page-title">{title}</h1>
       {searchble && (
