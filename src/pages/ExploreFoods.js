@@ -5,11 +5,10 @@ import Header from '../Components/Header';
 import randomRouteFood from '../services/randomRouteFood';
 
 const ExploreFoods = () => {
-  const history = useHistory()
+  const history = useHistory();
 
- async function randomFood() {
+  async function randomFood() {
     const randomItem = await randomRouteFood();
-    console.log(randomItem);
     history.push(`/comidas/${randomItem}`);
   }
 
