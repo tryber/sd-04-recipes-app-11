@@ -21,6 +21,11 @@ const AppProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(true);
   const [filteredWith, setFilteredWith] = useState('All');
+  const [fLetter, setFletter] = useState('');
+  const [filteredByIngredients, setFilteredByIngredients] = useState('');
+
+  const favoritesStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const [favorites, setFavorites] = useState(favoritesStorage || []);
 
   const context = {
     email,
@@ -51,6 +56,12 @@ const AppProvider = ({ children }) => {
     setFoodDetails,
     drinkDetails,
     setDrinkDetails,
+    fLetter,
+    setFletter,
+    filteredByIngredients,
+    setFilteredByIngredients,
+    favorites,
+    setFavorites,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

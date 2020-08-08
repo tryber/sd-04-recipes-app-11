@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 // import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import FoodCards from '../Components/FoodCards';
 import getFoods from '../services/getFoods';
@@ -34,6 +35,7 @@ const Foods = () => {
   }, []);
 
   if (loading) return <div>Loading...</div>;
+  if (filteredFoods.length === 1) return <Redirect to={`/comidas/${filteredFoods[0].idMeal}`} />;
 
   return (
     <div>
@@ -51,9 +53,7 @@ const Foods = () => {
         />
         {foodsCategories.map(({ strCategory }, index) => {
           if (index < 5) {
-            return (
-              <FoodCategory key={strCategory} categoryName={strCategory} />
-            );
+            return <FoodCategory key={strCategory} categoryName={strCategory} />;
           }
           return null;
         })}

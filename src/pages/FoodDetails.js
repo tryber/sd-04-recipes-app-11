@@ -107,7 +107,6 @@ const FoodDetails = (props) => {
         onClick={() => {
           copyToClipboard(window.location.href);
           document.getElementById('copied').innerHTML = 'Link copiado!';
-          // setTimeout(() => (document.getElementById('copied').innerHTML = ''), 5000);
         }}
       >
         {' '}
