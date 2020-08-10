@@ -47,6 +47,8 @@ const FoodDetails = (props) => {
     AppContext,
   );
 
+  console.log(foodDetails);
+
   const [isFavorite, setIsFavorite] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
 
@@ -105,7 +107,6 @@ const FoodDetails = (props) => {
         onClick={() => {
           copyToClipboard(window.location.href);
           document.getElementById('copied').innerHTML = 'Link copiado!';
-          // setTimeout(() => (document.getElementById('copied').innerHTML = ''), 5000);
         }}
       >
         {' '}
