@@ -26,6 +26,7 @@ const AppProvider = ({ children }) => {
 
   const favoritesStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const [favorites, setFavorites] = useState(favoritesStorage || []);
+  const [ingredients, setIngredients] = useState([]);
 
   const context = {
     email,
@@ -62,6 +63,8 @@ const AppProvider = ({ children }) => {
     setFilteredByIngredients,
     favorites,
     setFavorites,
+    ingredients,
+    setIngredients,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
