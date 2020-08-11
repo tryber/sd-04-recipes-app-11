@@ -1,10 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
-import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import copyToClipboard from 'clipboard-copy';
 import getFoodById from '../services/getFoodById';
-import getDrinks from '../services/getDrinks';
 import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -41,6 +38,20 @@ const FoodDetails = (props) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [checked, setChecked] = useState(false);
 
+  const toggleCheckbox = (index, checked, setChecked) => {
+    if (!checked) return setChecked([index]);
+
+    if (checked.includes(index)) {
+      return setChecked((prev) => [
+        ...prev.slice(0, prev.indexOf(index)),
+        ...prev.slice(prev.indexOf(index) + 1),
+      ]);
+    }
+    return setChecked((prevDones) => {
+      return [...prevDones, index];
+    });
+  };
+
   useEffect(() => {
     const loadFood = async () => {
       const { id } = props.match.params;
@@ -69,8 +80,8 @@ const FoodDetails = (props) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('inProgressRecipes', JSON.stringify(checked))
-  })
+    localStorage.setItem('inProgressRecipes', JSON.stringify(checked));
+  });
 
   if (loading) return <div>Loading...</div>;
 
@@ -84,20 +95,6 @@ const FoodDetails = (props) => {
       },
     ];
   }
-
-  const toggleCheckbox = (index, checked, setChecked) => {
-    if (!checked) return setChecked([index]);
-
-    if (checked.includes(index)) {
-      return setChecked((prev) => [
-        ...prev.slice(0, prev.indexOf(index)),
-        ...prev.slice(prev.indexOf(index) + 1),
-      ]);
-    }
-    return setChecked((prevDones) => {
-      return [...prevDones, index];
-    });
-  };
 
   return (
     <div>
@@ -133,7 +130,10 @@ const FoodDetails = (props) => {
       <h4 data-testid="recipe-category">{foodDetails.strCategory} </h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
-        .filter(({ ingredient }) => ingredient !== null && ingredient !== undefined && ingredient !== '' )
+        .filter(
+          ({ ingredient }) =>
+            ingredient !== null && ingredient !== undefined && ingredient !== ''
+        )
         .map(({ ingredient, measure }, index) => (
           <div key={ingredient} data-testid={`${index}-ingredient-step`}>
             <input

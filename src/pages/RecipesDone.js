@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import Header from '../Components/Header';
-import shareIcon from '../images/shareIcon.svg';
 
 const navButtons = () => (
   <div>

@@ -2,6 +2,6 @@
   text-decoration: line-through;
 }
 
-notChecked {
+.notChecked {
   color: chartreuse;
 }

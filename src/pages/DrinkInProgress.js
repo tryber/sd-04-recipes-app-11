@@ -144,7 +144,6 @@ const DrinkDetails = (props) => {
     setLoading,
     drinkDetails,
     setDrinkDetails,
-    foods,
     setFoods,
   } = useContext(AppContext);
 
@@ -152,6 +151,21 @@ const DrinkDetails = (props) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [checked, setChecked] = useState(false);
+
+  const toggleCheckbox = (index, checked, setChecked) => {
+    if (!checked) return setChecked([index]);
+
+    if (checked.includes(index)) {
+      setChecked((prev) => [
+        ...prev.slice(0, prev.indexOf(index)),
+        ...prev.slice(prev.indexOf(index) + 1),
+      ]);
+    }
+    return setChecked((prevDones) => {
+      return [...prevDones, index];
+    });
+  };
+
   useEffect(() => {
     const loadRecommended = async () => {
       await setLoading(true);
@@ -208,20 +222,6 @@ const DrinkDetails = (props) => {
   // const toLeft = (array) => {
   //   firstSix.push(firstSix.shift());
   // }
-
-  const toggleCheckbox = (index, checked, setChecked) => {
-    if (!checked) return setChecked([index]);
-
-    if (checked.includes(index)) {
-      return setChecked((prev) => [
-        ...prev.slice(0, prev.indexOf(index)),
-        ...prev.slice(prev.indexOf(index) + 1),
-      ]);
-    }
-    return setChecked((prevDones) => {
-      return [...prevDones, index];
-    });
-  };
 
   return (
     <div>
