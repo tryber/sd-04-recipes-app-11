@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function IngredientsCards({ ingredientsData }) {
   return (
@@ -18,9 +19,16 @@ function IngredientsCards({ ingredientsData }) {
             </div>
           );
         }
+        return null;
       })}
     </div>
   );
+}
+
+IngredientsCards.propTypes = {
+  ingredientsData: PropTypes.shape({
+    map: PropTypes.func.isRequired
+  })
 }
 
 export default IngredientsCards;
