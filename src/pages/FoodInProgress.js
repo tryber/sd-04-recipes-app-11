@@ -35,9 +35,6 @@ const FoodDetails = (props) => {
     AppContext
   );
 
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [checked, setChecked] = useState(false);
-
   const toggleCheckbox = (index, checked, setChecked) => {
     if (!checked) return setChecked([index]);
 
@@ -51,6 +48,9 @@ const FoodDetails = (props) => {
       return [...prevDones, index];
     });
   };
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const loadFood = async () => {
@@ -72,16 +72,7 @@ const FoodDetails = (props) => {
     loadFood().then(() => {
       if (localStorage.getItem('favoriteRecipes')) loadFavorite();
     });
-
-    const data = localStorage.getItem('inProgressRecipes');
-    if (data) {
-      setChecked(JSON.parse(data));
-    }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('inProgressRecipes', JSON.stringify(checked));
-  });
 
   if (loading) return <div>Loading...</div>;
 
