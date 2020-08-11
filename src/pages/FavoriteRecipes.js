@@ -9,15 +9,15 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function removeFromLocalStorage(recipeId, setFavorites) {
   const currentFavoriteRecipes = JSON.parse(
-    localStorage.getItem('favoriteRecipes')
+    localStorage.getItem('favoriteRecipes'),
   );
   console.log(currentFavoriteRecipes);
   const updatedFavoriteRecipes = currentFavoriteRecipes.filter(
-    ({ id }) => id !== recipeId
+    ({ id }) => id !== recipeId,
   );
   localStorage.setItem(
     'favoriteRecipes',
-    JSON.stringify(updatedFavoriteRecipes)
+    JSON.stringify(updatedFavoriteRecipes),
   );
   setFavorites(updatedFavoriteRecipes);
 }
@@ -127,7 +127,7 @@ const FavoriteRecipes = () => {
         data-testid="filter-by-food-btn"
         onClick={() =>
           setFavorites(
-            currentFavoriteRecipes.filter((recipe) => recipe.type === 'comida')
+            currentFavoriteRecipes.filter((recipe) => recipe.type === 'comida'),
           )
         }
         value="Comidas"
@@ -137,7 +137,7 @@ const FavoriteRecipes = () => {
         data-testid="filter-by-drink-btn"
         onClick={() =>
           setFavorites(
-            currentFavoriteRecipes.filter((recipe) => recipe.type === 'bebida')
+            currentFavoriteRecipes.filter((recipe) => recipe.type === 'bebida'),
           )
         }
         value="Bebidas"

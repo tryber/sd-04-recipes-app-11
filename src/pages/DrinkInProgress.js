@@ -57,16 +57,12 @@ const DrinkDetails = (props) => {
     if (!checked) return setChecked([index]);
 
     if (checked.includes(index)) {
-      setChecked((prev) => {
-        return [
-          ...prev.slice(0, prev.indexOf(index)),
-          ...prev.slice(prev.indexOf(index) + 1),
-        ];
-      });
+      setChecked((prev) => [
+        ...prev.slice(0, prev.indexOf(index)),
+        ...prev.slice(prev.indexOf(index) + 1),
+      ]);
     }
-    return setChecked((prevDones) => {
-      return [...prevDones, index];
-    });
+    return setChecked((prevDones) => [...prevDones, index]);
   };
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -89,7 +85,7 @@ const DrinkDetails = (props) => {
     const loadFavorite = () => {
       const { id } = props.match.params;
       const currentFavorite = JSON.parse(
-        localStorage.getItem('favoriteRecipes')
+        localStorage.getItem('favoriteRecipes'),
       );
       setIsFavorite(currentFavorite.some((curr) => curr.id === id));
     };
@@ -160,7 +156,7 @@ const DrinkDetails = (props) => {
       {ingredientsAndMeasure
         .filter(
           ({ ingredient }) =>
-            ingredient !== null && ingredient !== undefined && ingredient !== ''
+            ingredient !== null && ingredient !== undefined && ingredient !== '',
         )
         .map(({ ingredient, measure }, index) => (
           <div data-testid={`${index}-ingredient-step`} key={ingredient}>

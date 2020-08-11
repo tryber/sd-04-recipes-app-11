@@ -32,7 +32,7 @@ function favoriteToLocalStorage(recipe) {
 
 const FoodDetails = (props) => {
   const { loading, setLoading, foodDetails, setFoodDetails } = useContext(
-    AppContext
+    AppContext,
   );
 
   const toggleCheckbox = (index, checked, setChecked) => {
@@ -44,9 +44,7 @@ const FoodDetails = (props) => {
         ...prev.slice(prev.indexOf(index) + 1),
       ]);
     }
-    return setChecked((prevDones) => {
-      return [...prevDones, index];
-    });
+    return setChecked((prevDones) => [...prevDones, index]);
   };
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -64,7 +62,7 @@ const FoodDetails = (props) => {
     const loadFavorite = () => {
       const { id } = props.match.params;
       const currentFavorite = JSON.parse(
-        localStorage.getItem('favoriteRecipes')
+        localStorage.getItem('favoriteRecipes'),
       );
       setIsFavorite(currentFavorite.some((curr) => curr.id === id));
     };
@@ -123,7 +121,7 @@ const FoodDetails = (props) => {
       {ingredientsAndMeasure
         .filter(
           ({ ingredient }) =>
-            ingredient !== null && ingredient !== undefined && ingredient !== ''
+            ingredient !== null && ingredient !== undefined && ingredient !== '',
         )
         .map(({ ingredient, measure }, index) => (
           <div key={ingredient} data-testid={`${index}-ingredient-step`}>
