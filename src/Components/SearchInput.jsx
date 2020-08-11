@@ -1,6 +1,5 @@
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import findData from '../services/findDataFromRadio';
 
