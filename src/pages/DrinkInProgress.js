@@ -9,6 +9,9 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './InProgress.css';
+// import Buttons from '../Components/Buttons';
+import Func from '../Components/Func';
+
 
 export function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
@@ -41,18 +44,6 @@ function favoriteToLocalStorage(recipe) {
   ];
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
 }
-
-const toggleCheckbox = (index, checked, setChecked) => {
-  if (!checked) return setChecked([index]);
-
-  if (checked.includes(index)) {
-    setChecked((prev) => [
-      ...prev.slice(0, prev.indexOf(index)),
-      ...prev.slice(prev.indexOf(index) + 1),
-    ]);
-  }
-  return setChecked((prevDones) => [...prevDones, index]);
-};
 
 const DrinkInProgress = (props) => {
   const {
@@ -123,8 +114,10 @@ const DrinkInProgress = (props) => {
         data-testid="recipe-photo"
         src={drinkDetails.strDrinkThumb}
         alt={drinkDetails.strDrink}
+        width="200px"
       />
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
+      {/* <Buttons /> */}
       <button
         type="button"
         onClick={() => {
@@ -163,7 +156,7 @@ const DrinkInProgress = (props) => {
               key={ingredient}
               id={ingredient}
               defaultChecked={false}
-              onChange={() => toggleCheckbox(index, checked, setChecked)}
+              onChange={() => Func(index, checked, setChecked)}
             />
             <label
               className={
