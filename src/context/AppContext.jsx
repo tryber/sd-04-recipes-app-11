@@ -28,6 +28,8 @@ const AppProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(favoritesStorage || []);
   const [ingredients, setIngredients] = useState([]);
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const context = {
     email,
     password,
@@ -65,6 +67,8 @@ const AppProvider = ({ children }) => {
     setFavorites,
     ingredients,
     setIngredients,
+    isFavorite,
+    setIsFavorite,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

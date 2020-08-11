@@ -2,13 +2,14 @@ import React, { useEffect, useContext, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import copyToClipboard from 'clipboard-copy';
+// import copyToClipboard from 'clipboard-copy';
 import getFoodById from '../services/getFoodById';
 import getDrinks from '../services/getDrinks';
 import { AppContext } from '../context/AppContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import shareIcon from '../images/shareIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Buttons from '../Components/Buttons';
 
 export function DrinkCard({ drink, index }) {
   const { strDrinkThumb, strDrink } = drink;
@@ -20,27 +21,27 @@ export function DrinkCard({ drink, index }) {
   );
 }
 
-function favoriteToLocalStorage(recipe) {
-  const {
-    idMeal: id,
-    strCategory: category,
-    strArea: area,
-    strMeal: name,
-    strMealThumb: image,
-  } = recipe;
-  const type = 'comida';
-  const alcoholicOrNot = '';
+// function favoriteToLocalStorage(recipe) {
+//   const {
+//     idMeal: id,
+//     strCategory: category,
+//     strArea: area,
+//     strMeal: name,
+//     strMealThumb: image,
+//   } = recipe;
+//   const type = 'comida';
+//   const alcoholicOrNot = '';
 
-  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
-    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
-    : [];
+//   const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
+//     ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+//     : [];
 
-  const favoriteRecipes = [
-    ...currentFavoriteRecipes,
-    { id, type, area, category, alcoholicOrNot, name, image },
-  ];
-  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-}
+//   const favoriteRecipes = [
+//     ...currentFavoriteRecipes,
+//     { id, type, area, category, alcoholicOrNot, name, image },
+//   ];
+//   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+// }
 
 const FoodDetails = (props) => {
   const { loading, setLoading, foodDetails, setFoodDetails, drinks, setDrinks } = useContext(
@@ -49,7 +50,7 @@ const FoodDetails = (props) => {
 
   console.log(foodDetails);
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { setIsFavorite } = useContext(AppContext);
   const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
@@ -102,7 +103,7 @@ const FoodDetails = (props) => {
     <div>
       <img data-testid="recipe-photo" src={foodDetails.strMealThumb} alt={foodDetails.strMeal} />
       <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
-      <button
+      {/* <button
         type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
@@ -112,8 +113,9 @@ const FoodDetails = (props) => {
         {' '}
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
-      <div id="copied" />
-      <button
+      <div id="copied" /> */}
+      <Buttons />
+      {/* <button
         type="button"
         onClick={() => {
           favoriteToLocalStorage(foodDetails);
@@ -125,7 +127,7 @@ const FoodDetails = (props) => {
           alt="icon"
           data-testid="favorite-btn"
         />
-      </button>
+      </button> */}
       <h4 data-testid="recipe-category">{foodDetails.strCategory} </h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
