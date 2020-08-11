@@ -1,13 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import copyToClipboard from 'clipboard-copy';
+// import copyToClipboard from 'clipboard-copy';
 import getDrinkById from '../services/getDrinkById';
 import getFoods from '../services/getFoods';
 import { AppContext } from '../context/AppContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import shareIcon from '../images/shareIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Buttons from '../Components/Buttons';
 
 export function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
@@ -19,37 +20,41 @@ export function FoodCard({ food, index }) {
   );
 }
 
-function favoriteToLocalStorage(recipe) {
-  const {
-    idDrink: id,
-    strCategory: category,
-    strAlcoholic: alcoholicOrNot,
-    strDrink: name,
-    strDrinkThumb: image,
-  } = recipe;
-  const type = 'bebida';
-  const area = '';
+// function favoriteToLocalStorage(recipe) {
+//   const {
+//     idDrink: id,
+//     strCategory: category,
+//     strAlcoholic: alcoholicOrNot,
+//     strDrink: name,
+//     strDrinkThumb: image,
+//   } = recipe;
+//   const type = 'bebida';
+//   const area = '';
 
-  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
-    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
-    : [];
+//   const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
+//     ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+//     : [];
 
-  const favoriteRecipes = [
-    ...currentFavoriteRecipes,
-    { id, type, area, category, alcoholicOrNot, name, image },
-  ];
-  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-}
+//   const favoriteRecipes = [
+//     ...currentFavoriteRecipes,
+//     { id, type, area, category, alcoholicOrNot, name, image },
+//   ];
+//   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+// }
 
 const DrinkDetails = (props) => {
-  const { loading, setLoading, drinkDetails, setDrinkDetails, foods, setFoods } = useContext(
-    AppContext,
-  );
+  const {
+    loading,
+    setLoading,
+    drinkDetails,
+    setDrinkDetails,
+    foods,
+    setFoods,
+  } = useContext(AppContext);
 
   console.log(drinkDetails);
 
-
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { setIsFavorite } = useContext(AppContext);
   const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
@@ -68,7 +73,9 @@ const DrinkDetails = (props) => {
 
     const loadFavorite = () => {
       const { id } = props.match.params;
-      const currentFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      const currentFavorite = JSON.parse(
+        localStorage.getItem('favoriteRecipes'),
+      );
       setIsFavorite(currentFavorite.some((curr) => curr.id === id));
     };
 
@@ -106,7 +113,7 @@ const DrinkDetails = (props) => {
         alt={drinkDetails.strDrink}
       />
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
-      <button
+      {/* <button
         type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
@@ -116,8 +123,9 @@ const DrinkDetails = (props) => {
       >
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
-      <div id="copied" />
-      <button
+      <div id="copied" /> */}
+      <Buttons />
+      {/* <button
         type="button"
         onClick={() => {
           favoriteToLocalStorage(drinkDetails);
@@ -129,7 +137,7 @@ const DrinkDetails = (props) => {
           alt="icon"
           data-testid="favorite-btn"
         />
-      </button>
+      </button> */}
       <h4 data-testid="recipe-category">
         {`${drinkDetails.strCategory} ${drinkDetails.strAlcoholic} `}{' '}
       </h4>
