@@ -42,7 +42,19 @@ function favoriteToLocalStorage(recipe) {
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
 }
 
-const DrinkDetails = (props) => {
+const toggleCheckbox = (index, checked, setChecked) => {
+  if (!checked) return setChecked([index]);
+
+  if (checked.includes(index)) {
+    setChecked((prev) => [
+      ...prev.slice(0, prev.indexOf(index)),
+      ...prev.slice(prev.indexOf(index) + 1),
+    ]);
+  }
+  return setChecked((prevDones) => [...prevDones, index]);
+};
+
+const DrinkInProgress = (props) => {
   const {
     loading,
     setLoading,
@@ -52,18 +64,6 @@ const DrinkDetails = (props) => {
   } = useContext(AppContext);
 
   console.log(drinkDetails);
-
-  const toggleCheckbox = (index, checked, setChecked) => {
-    if (!checked) return setChecked([index]);
-
-    if (checked.includes(index)) {
-      setChecked((prev) => [
-        ...prev.slice(0, prev.indexOf(index)),
-        ...prev.slice(prev.indexOf(index) + 1),
-      ]);
-    }
-    return setChecked((prevDones) => [...prevDones, index]);
-  };
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -149,9 +149,7 @@ const DrinkDetails = (props) => {
           data-testid="favorite-btn"
         />
       </button>
-      <h4 data-testid="recipe-category">
-        {`${drinkDetails.strCategory} ${drinkDetails.strAlcoholic} `}{' '}
-      </h4>
+      <h4 data-testid="recipe-category">{drinkDetails.strAlcoholic}</h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
         .filter(
@@ -187,7 +185,7 @@ const DrinkDetails = (props) => {
   );
 };
 
-export default DrinkDetails;
+export default DrinkInProgress;
 
 FoodCard.propTypes = {
   food: PropTypes.objectOf(PropTypes.any).isRequired,

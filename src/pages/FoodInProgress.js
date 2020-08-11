@@ -30,22 +30,22 @@ function favoriteToLocalStorage(recipe) {
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
 }
 
-const FoodDetails = (props) => {
+const toggleCheckbox = (index, checked, setChecked) => {
+  if (!checked) return setChecked([index]);
+
+  if (checked.includes(index)) {
+    return setChecked((prev) => [
+      ...prev.slice(0, prev.indexOf(index)),
+      ...prev.slice(prev.indexOf(index) + 1),
+    ]);
+  }
+  return setChecked((prevDones) => [...prevDones, index]);
+};
+
+const FoodInProgress = (props) => {
   const { loading, setLoading, foodDetails, setFoodDetails } = useContext(
     AppContext,
   );
-
-  const toggleCheckbox = (index, checked, setChecked) => {
-    if (!checked) return setChecked([index]);
-
-    if (checked.includes(index)) {
-      return setChecked((prev) => [
-        ...prev.slice(0, prev.indexOf(index)),
-        ...prev.slice(prev.indexOf(index) + 1),
-      ]);
-    }
-    return setChecked((prevDones) => [...prevDones, index]);
-  };
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -143,7 +143,7 @@ const FoodDetails = (props) => {
       <h2>Instructions</h2>
       <p data-testid="instructions">{foodDetails.strInstructions}</p>
       <Link to="/receitas-feitas">
-        <button type="button" data-testid="finish-recipe-btn" disabled="true">
+        <button type="button" data-testid="finish-recipe-btn">
           Finalizar Receita
         </button>
       </Link>
@@ -151,4 +151,4 @@ const FoodDetails = (props) => {
   );
 };
 
-export default FoodDetails;
+export default FoodInProgress;
