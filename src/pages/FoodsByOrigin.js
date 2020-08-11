@@ -6,6 +6,12 @@ const FoodsByOrigin = () => {
   return (
     <div>
       <Header title="Explorar Origem" searchble />
+      <select data-testid="explore-by-area-dropdown">
+        <option data-testid="American-option">
+          All
+        </option>
+      </select>
+
       <Footer />
     </div>
   );

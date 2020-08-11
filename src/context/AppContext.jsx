@@ -26,6 +26,7 @@ const AppProvider = ({ children }) => {
 
   const favoritesStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const [favorites, setFavorites] = useState(favoritesStorage || []);
+  const [ingredients, setIngredients] = useState([]);
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -64,6 +65,8 @@ const AppProvider = ({ children }) => {
     setFilteredByIngredients,
     favorites,
     setFavorites,
+    ingredients,
+    setIngredients,
     isFavorite,
     setIsFavorite,
   };
