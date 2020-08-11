@@ -27,7 +27,7 @@ function IngredientsCards({ ingredientsData }) {
 
 IngredientsCards.propTypes = {
   ingredientsData: PropTypes.shape({
-    map: PropTypes.func,
+    map: PropTypes.func.isRequired,
   }),
 };
 
