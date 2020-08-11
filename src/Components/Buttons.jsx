@@ -8,7 +8,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { AppContext } from '../context/AppContext';
 
-function favoriteToLocalStorage(recipe) {
+export function favoriteToLocalStorage(recipe) {
   const {
     idMeal: id,
     strCategory: category,
