@@ -78,6 +78,6 @@ const Buttons = ({ recipe, match }) => {
 export default Buttons;
 
 Buttons.propTypes = {
-    match: PropTypes.objectOf(PropTypes.any).isRequired,
-    recipe: PropTypes.objectOf(PropTypes.any).isRequired,
-  };
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+};

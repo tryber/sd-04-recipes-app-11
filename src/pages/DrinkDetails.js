@@ -54,7 +54,7 @@ const DrinkDetails = (props) => {
 
   console.log(drinkDetails);
 
-  const { isFavorite, setIsFavorite } = useContext(AppContext);
+  const { setIsFavorite } = useContext(AppContext);
   const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
