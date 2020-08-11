@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 // import { Link } from 'react-router-dom';
 
@@ -27,8 +27,8 @@ function IngredientsCards({ ingredientsData }) {
 
 IngredientsCards.propTypes = {
   ingredientsData: PropTypes.shape({
-    map: PropTypes.func.isRequired
-  })
-}
+    map: PropTypes.func,
+  }),
+};
 
 export default IngredientsCards;
