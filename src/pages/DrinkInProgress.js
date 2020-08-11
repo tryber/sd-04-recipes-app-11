@@ -178,7 +178,16 @@ const DrinkDetails = (props) => {
       loadDrink();
       if (localStorage.getItem('favoriteRecipes')) loadFavorite();
     });
+
+    const data = localStorage.getItem('inProgressRecipes');
+    if (data) {
+      setChecked(JSON.parse(data));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('inProgressRecipes', JSON.stringify(checked));
+  });
 
   if (loading) return <div>Loading...</div>;
   let ingredientsAndMeasure = [];
@@ -252,11 +261,13 @@ const DrinkDetails = (props) => {
       </h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
-        .filter(({ ingredient }) => ingredient !== {})
+        .filter(
+          ({ ingredient }) =>
+            ingredient !== null && ingredient !== undefined && ingredient !== ''
+        )
         .map(({ ingredient, measure }, index) => (
-          <div>
+          <div data-testid={`${index}-ingredient-step`} key={ingredient}>
             <input
-              data-testid={`${index}-ingredient-step`}
               type="checkbox"
               key={ingredient}
               id={ingredient}

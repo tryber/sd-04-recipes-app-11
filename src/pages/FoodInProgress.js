@@ -47,6 +47,7 @@ const FoodDetails = (props) => {
       const response = await getFoodById(id);
       await setFoodDetails(response.meals[0]);
       await setLoading(false);
+      console.log(response.meals[0]);
     };
 
     const loadFavorite = () => {
@@ -60,9 +61,19 @@ const FoodDetails = (props) => {
     loadFood().then(() => {
       if (localStorage.getItem('favoriteRecipes')) loadFavorite();
     });
+
+    const data = localStorage.getItem('inProgressRecipes');
+    if (data) {
+      setChecked(JSON.parse(data));
+    }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('inProgressRecipes', JSON.stringify(checked))
+  })
+
   if (loading) return <div>Loading...</div>;
+
   let ingredientsAndMeasure = [];
   for (let index = 1; index <= 20; index += 1) {
     ingredientsAndMeasure = [
@@ -122,14 +133,13 @@ const FoodDetails = (props) => {
       <h4 data-testid="recipe-category">{foodDetails.strCategory} </h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
-        .filter(({ ingredient }) => ingredient !== '')
+        .filter(({ ingredient }) => ingredient !== null && ingredient !== undefined && ingredient !== '' )
         .map(({ ingredient, measure }, index) => (
-          <div>
+          <div key={ingredient} data-testid={`${index}-ingredient-step`}>
             <input
-              data-testid={`${index}-ingredient-step`}
               type="checkbox"
               key={ingredient}
-              id={ingredient}
+              id={index}
               defaultChecked={false}
               onChange={() => toggleCheckbox(index, checked, setChecked)}
             />{' '}
@@ -137,14 +147,14 @@ const FoodDetails = (props) => {
               className={
                 checked && checked.includes(index) ? 'checked' : 'notChecked'
               }
-              htmlFor={ingredient}
+              htmlFor={index}
             >{`- ${ingredient} - ${measure}`}</label>
           </div>
         ))}
       <h2>Instructions</h2>
       <p data-testid="instructions">{foodDetails.strInstructions}</p>
       <Link to="/receitas-feitas">
-        <button type="button" data-testid="finish-recipe-btn">
+        <button type="button" data-testid="finish-recipe-btn" disabled="true">
           Finalizar Receita
         </button>
       </Link>
