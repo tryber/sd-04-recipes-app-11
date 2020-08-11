@@ -26,7 +26,7 @@ function IngredientsCards({ ingredientsData }) {
 }
 
 IngredientsCards.propTypes = {
-  food: PropTypes.objectOf(PropTypes.any).isRequired,
+  ingredientsData: PropTypes.objectOf(PropTypes.any).isRequired,
   map: PropTypes.func.isRequired,
 };
 
