@@ -8,17 +8,10 @@ import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function removeFromLocalStorage(recipeId, setFavorites) {
-  const currentFavoriteRecipes = JSON.parse(
-    localStorage.getItem('favoriteRecipes')
-  );
+  const currentFavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   console.log(currentFavoriteRecipes);
-  const updatedFavoriteRecipes = currentFavoriteRecipes.filter(
-    ({ id }) => id !== recipeId
-  );
-  localStorage.setItem(
-    'favoriteRecipes',
-    JSON.stringify(updatedFavoriteRecipes)
-  );
+  const updatedFavoriteRecipes = currentFavoriteRecipes.filter(({ id }) => id !== recipeId);
+  localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavoriteRecipes));
   setFavorites(updatedFavoriteRecipes);
 }
 
@@ -125,21 +118,16 @@ const FavoriteRecipes = () => {
       <input
         type="button"
         data-testid="filter-by-food-btn"
-        onClick={() =>
-          setFavorites(
-            currentFavoriteRecipes.filter((recipe) => recipe.type === 'comida')
-          )
-        }
+
+        onClick={() => setFavorites(currentFavoriteRecipes.filter((recipe) => recipe.type === 'comida'))}
+
         value="Comidas"
       />
       <input
         type="button"
         data-testid="filter-by-drink-btn"
-        onClick={() =>
-          setFavorites(
-            currentFavoriteRecipes.filter((recipe) => recipe.type === 'bebida')
-          )
-        }
+
+        onClick={() => setFavorites(currentFavoriteRecipes.filter((recipe) => recipe.type === 'bebida'))}
         value="Bebidas"
       />
       {favorites.map((recipe, index) => {
