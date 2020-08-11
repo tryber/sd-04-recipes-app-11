@@ -8,6 +8,7 @@ import { AppContext } from '../context/AppContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Buttons from '../Components/Buttons';
 
 export function FoodCard({ food, index }) {
   const { strMealThumb, strMeal } = food;
@@ -49,7 +50,7 @@ const DrinkDetails = (props) => {
   console.log(drinkDetails);
 
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const {isFavorite, setIsFavorite} = useContext(AppContext);
   const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
@@ -106,7 +107,7 @@ const DrinkDetails = (props) => {
         alt={drinkDetails.strDrink}
       />
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
-      <button
+      {/* <button
         type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
@@ -116,8 +117,9 @@ const DrinkDetails = (props) => {
       >
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
-      <div id="copied" />
-      <button
+      <div id="copied" /> */}
+      <Buttons />
+      {/* <button
         type="button"
         onClick={() => {
           favoriteToLocalStorage(drinkDetails);
@@ -129,7 +131,7 @@ const DrinkDetails = (props) => {
           alt="icon"
           data-testid="favorite-btn"
         />
-      </button>
+      </button> */}
       <h4 data-testid="recipe-category">
         {`${drinkDetails.strCategory} ${drinkDetails.strAlcoholic} `}{' '}
       </h4>

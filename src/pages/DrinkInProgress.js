@@ -9,7 +9,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './InProgress.css';
-// import Buttons from '../Components/Buttons';
+import Buttons from '../Components/Buttons';
 import Func from '../Components/Func';
 
 
@@ -56,7 +56,7 @@ const DrinkInProgress = (props) => {
 
   console.log(drinkDetails);
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const {isFavorite, setIsFavorite} = useContext(AppContext);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -117,8 +117,8 @@ const DrinkInProgress = (props) => {
         width="200px"
       />
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
-      {/* <Buttons /> */}
-      <button
+      <Buttons recipe={drinkDetails} />
+      {/* <button
         type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
@@ -128,8 +128,8 @@ const DrinkInProgress = (props) => {
       >
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
-      <div id="copied" />
-      <button
+      <div id="copied" /> */}
+      {/* <button
         type="button"
         onClick={() => {
           favoriteToLocalStorage(drinkDetails);
@@ -141,7 +141,7 @@ const DrinkInProgress = (props) => {
           alt="icon"
           data-testid="favorite-btn"
         />
-      </button>
+      </button> */}
       <h4 data-testid="recipe-category">{drinkDetails.strAlcoholic}</h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure

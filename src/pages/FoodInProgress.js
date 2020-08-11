@@ -7,7 +7,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './InProgress.css';
-// import Buttons from '../Components/Buttons';
+import Buttons from '../Components/Buttons';
 import Func from '../Components/Func';
 
 function favoriteToLocalStorage(recipe) {
@@ -37,7 +37,7 @@ const FoodInProgress = (props) => {
     AppContext,
   );
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const {isFavorite, setIsFavorite} = useContext(AppContext);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -84,8 +84,8 @@ const FoodInProgress = (props) => {
         width="200px"
       />
       <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
-      {/* <Buttons /> */}
-      <button
+      <Buttons recipe={foodDetails} />
+      {/* <button
         type="button"
         onClick={() => {
           copyToClipboard(window.location.href);
@@ -94,8 +94,8 @@ const FoodInProgress = (props) => {
       >
         <img src={shareIcon} alt="icon" data-testid="share-btn" />
       </button>
-      <div id="copied" />
-      <button
+      <div id="copied" /> */}
+      {/* <button
         type="button"
         onClick={() => {
           favoriteToLocalStorage(foodDetails);
@@ -107,7 +107,7 @@ const FoodInProgress = (props) => {
           alt="icon"
           data-testid="favorite-btn"
         />
-      </button>
+      </button> */}
       <h4 data-testid="recipe-category">{foodDetails.strCategory} </h4>
       <h2>Ingredients</h2>
       {ingredientsAndMeasure
