@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import copyToClipboard from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -45,12 +46,15 @@ const Buttons = ({ recipe, match }) => {
     };
   }, []);
 
+  const location = useLocation();
+
   return (
     <div>
       <button
         type="button"
         onClick={() => {
-          copyToClipboard(window.location.href);
+          copyToClipboard(window.location.href.replace("/in-progress", ""));
+          console.log(window.location.href.replace("/in-progress", ""))
           document.getElementById('copied').innerHTML = 'Link copiado!';
           // setTimeout(() => document.getElementById('copied').innerHTML = '', 5000)
         }}
