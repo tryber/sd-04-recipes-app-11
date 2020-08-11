@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import copyToClipboard from 'clipboard-copy';
 import getFoodById from '../services/getFoodById';
 import { AppContext } from '../context/AppContext';
@@ -61,9 +61,6 @@ const FoodInProgress = (props) => {
       if (localStorage.getItem('favoriteRecipes')) loadFavorite();
     });
   }, []);
-
-  const location = useLocation();
-  console.log(location.pathname);
 
   if (loading) return <div>Loading...</div>;
 
