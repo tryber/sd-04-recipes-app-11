@@ -20,37 +20,41 @@ export function FoodCard({ food, index }) {
   );
 }
 
-function favoriteToLocalStorage(recipe) {
-  const {
-    idDrink: id,
-    strCategory: category,
-    strAlcoholic: alcoholicOrNot,
-    strDrink: name,
-    strDrinkThumb: image,
-  } = recipe;
-  const type = 'bebida';
-  const area = '';
+// function favoriteToLocalStorage(recipe) {
+//   const {
+//     idDrink: id,
+//     strCategory: category,
+//     strAlcoholic: alcoholicOrNot,
+//     strDrink: name,
+//     strDrinkThumb: image,
+//   } = recipe;
+//   const type = 'bebida';
+//   const area = '';
 
-  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
-    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
-    : [];
+//   const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
+//     ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+//     : [];
 
-  const favoriteRecipes = [
-    ...currentFavoriteRecipes,
-    { id, type, area, category, alcoholicOrNot, name, image },
-  ];
-  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-}
+//   const favoriteRecipes = [
+//     ...currentFavoriteRecipes,
+//     { id, type, area, category, alcoholicOrNot, name, image },
+//   ];
+//   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+// }
 
 const DrinkDetails = (props) => {
-  const { loading, setLoading, drinkDetails, setDrinkDetails, foods, setFoods } = useContext(
-    AppContext,
-  );
+  const {
+    loading,
+    setLoading,
+    drinkDetails,
+    setDrinkDetails,
+    foods,
+    setFoods,
+  } = useContext(AppContext);
 
   console.log(drinkDetails);
 
-
-  const {isFavorite, setIsFavorite} = useContext(AppContext);
+  const { isFavorite, setIsFavorite } = useContext(AppContext);
   const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
@@ -69,7 +73,9 @@ const DrinkDetails = (props) => {
 
     const loadFavorite = () => {
       const { id } = props.match.params;
-      const currentFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      const currentFavorite = JSON.parse(
+        localStorage.getItem('favoriteRecipes'),
+      );
       setIsFavorite(currentFavorite.some((curr) => curr.id === id));
     };
 

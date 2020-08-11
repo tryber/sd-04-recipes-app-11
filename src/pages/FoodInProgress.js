@@ -10,34 +10,34 @@ import './InProgress.css';
 import Buttons from '../Components/Buttons';
 import Func from '../Components/Func';
 
-function favoriteToLocalStorage(recipe) {
-  const {
-    idMeal: id,
-    strCategory: category,
-    strArea: area,
-    strMeal: name,
-    strMealThumb: image,
-  } = recipe;
-  const type = 'comida';
-  const alcoholicOrNot = '';
+// function favoriteToLocalStorage(recipe) {
+//   const {
+//     idMeal: id,
+//     strCategory: category,
+//     strArea: area,
+//     strMeal: name,
+//     strMealThumb: image,
+//   } = recipe;
+//   const type = 'comida';
+//   const alcoholicOrNot = '';
 
-  const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
-    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
-    : [];
+//   const currentFavoriteRecipes = localStorage.getItem('favoriteRecipes')
+//     ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+//     : [];
 
-  const favoriteRecipes = [
-    ...currentFavoriteRecipes,
-    { id, type, area, category, alcoholicOrNot, name, image },
-  ];
-  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-}
+//   const favoriteRecipes = [
+//     ...currentFavoriteRecipes,
+//     { id, type, area, category, alcoholicOrNot, name, image },
+//   ];
+//   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+// }
 
 const FoodInProgress = (props) => {
   const { loading, setLoading, foodDetails, setFoodDetails } = useContext(
     AppContext,
   );
 
-  const { isFavorite, setIsFavorite } = useContext(AppContext);
+  const { setIsFavorite } = useContext(AppContext);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {

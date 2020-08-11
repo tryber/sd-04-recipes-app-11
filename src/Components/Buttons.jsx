@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import copyToClipboard from 'clipboard-copy';
@@ -75,3 +76,8 @@ const Buttons = ({ recipe, match }) => {
 };
 
 export default Buttons;
+
+Buttons.propTypes = {
+    match: PropTypes.objectOf(PropTypes.any).isRequired,
+    recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  };
