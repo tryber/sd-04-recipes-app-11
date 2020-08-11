@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import copyToClipboard from 'clipboard-copy';
+// import copyToClipboard from 'clipboard-copy';
 import getFoodById from '../services/getFoodById';
 import { AppContext } from '../context/AppContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import shareIcon from '../images/shareIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './InProgress.css';
 import Buttons from '../Components/Buttons';
 import Func from '../Components/Func';
@@ -37,7 +37,7 @@ const FoodInProgress = (props) => {
     AppContext,
   );
 
-  const {isFavorite, setIsFavorite} = useContext(AppContext);
+  const { isFavorite, setIsFavorite } = useContext(AppContext);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -113,7 +113,9 @@ const FoodInProgress = (props) => {
       {ingredientsAndMeasure
         .filter(
           ({ ingredient }) =>
-            ingredient !== null && ingredient !== undefined && ingredient !== '',
+            ingredient !== null &&
+            ingredient !== undefined &&
+            ingredient !== '',
         )
         .map(({ ingredient, measure }, index) => (
           <div key={ingredient} data-testid={`${index}-ingredient-step`}>

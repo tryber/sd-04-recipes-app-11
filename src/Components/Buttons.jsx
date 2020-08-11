@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useContext } from 'react';
 import copyToClipboard from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import { useEffect } from 'react';
-import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
 function favoriteToLocalStorage(recipe) {

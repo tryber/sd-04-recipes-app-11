@@ -1,13 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import copyToClipboard from 'clipboard-copy';
+// import copyToClipboard from 'clipboard-copy';
 import getDrinkById from '../services/getDrinkById';
 import getFoods from '../services/getFoods';
 import { AppContext } from '../context/AppContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import shareIcon from '../images/shareIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Buttons from '../Components/Buttons';
 
 export function FoodCard({ food, index }) {

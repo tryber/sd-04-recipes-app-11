@@ -65,7 +65,7 @@ const AppProvider = ({ children }) => {
     favorites,
     setFavorites,
     isFavorite,
-    setIsFavorite
+    setIsFavorite,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
