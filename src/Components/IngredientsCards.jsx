@@ -27,7 +27,6 @@ function IngredientsCards({ ingredientsData }) {
 
 IngredientsCards.propTypes = {
   ingredientsData: PropTypes.objectOf(PropTypes.any).isRequired,
-  map: PropTypes.func.isRequired,
 };
 
 export default IngredientsCards;
