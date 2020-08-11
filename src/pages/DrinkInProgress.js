@@ -57,10 +57,12 @@ const DrinkDetails = (props) => {
     if (!checked) return setChecked([index]);
 
     if (checked.includes(index)) {
-      setChecked((prev) => {} [
-        ...prev.slice(0, prev.indexOf(index)),
-        ...prev.slice(prev.indexOf(index) + 1),
-      ]);
+      setChecked((prev) => {
+        return [
+          ...prev.slice(0, prev.indexOf(index)),
+          ...prev.slice(prev.indexOf(index) + 1),
+        ];
+      });
     }
     return setChecked((prevDones) => {
       return [...prevDones, index];
